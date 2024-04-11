@@ -1,2 +1,7 @@
 # TrabalhoJava
-Trabalho final p/ matéria Java
+##Participantes do Grupo
+###1    ALEXANDRE CARVALHO CURZI
+###1    CARLOS ALBERTO LOPES DUARTE
+###1    ERIK ROMANELI HUDGINS
+###1    GABRIEL DA ROCHA SANTOS COUTINHO
+###1    MAYCON OLIVEIRA CORRÊA STATZNER
