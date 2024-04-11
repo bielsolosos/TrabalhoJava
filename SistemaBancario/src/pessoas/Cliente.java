@@ -2,20 +2,25 @@ package pessoas;
 
 public class Cliente {
 	private int senha;
-	private int CPF;
-	//TODO coloca pra minusculo pq o eclipse do gabriel bugo
-	
-	public Cliente(int senha, int CPF) {
-		super();
+	private String cpf;
+
+	public Cliente(int senha, String cpf) {
+
 		this.senha = senha;
-		this.CPF = CPF;
+		this.cpf = cpf;
 	}
+
+	public Cliente(String cpf) {
+
+		this.cpf = cpf;
+	}
+
 	public int getSenha() {
 		return senha;
 	}
-	public int getCPF() {
-		return CPF;
+
+	public String getCpf() {
+		return cpf;
 	}
-	
-	
+
 }
