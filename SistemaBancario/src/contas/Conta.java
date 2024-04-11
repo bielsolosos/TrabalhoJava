@@ -4,7 +4,7 @@ import enums.TipoEnum;
 import pessoas.Cliente;
 
 public abstract class Conta extends Cliente {
-	private double saldo;
+	protected double saldo;
 	private String agencia;
 	private TipoEnum tipo;
 	
@@ -39,5 +39,15 @@ public abstract class Conta extends Cliente {
 		return agencia;
 	}
 
-	
+	public void saque(double valor) {
+		this.saldo-=valor;
+	}
+	public void deposito(double valor) {
+		this.saldo+=valor;
+	}
+	public void transferencia(double valor, Conta conta){
+		this.saldo-=valor;
+		conta.deposito(valor);;
+	}
+
 }

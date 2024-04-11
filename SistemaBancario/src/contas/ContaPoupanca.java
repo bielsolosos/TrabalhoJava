@@ -8,6 +8,11 @@ public class ContaPoupanca extends Conta{
 		super(senha, cpf, saldo, agencia);
 	}
 
+	public double simulacao(int dias, double valor) {
+		return valor+valor*(dias*0.001);
+		//rende 0,1% ao dia 
+	}
+	
 	@Override
 	public TipoEnum getTipo() {
 		return super.getTipo().POUPANCA;
