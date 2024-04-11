@@ -11,7 +11,6 @@ public class Cliente {
 	}
 
 	public Cliente(String cpf) {
-
 		this.cpf = cpf;
 	}
 
