@@ -1,6 +1,7 @@
 package contas;
 
 import enums.TipoEnum;
+import interfaces.Transacoes;
 import pessoas.Cliente;
 
 public abstract class Conta extends Cliente {
@@ -26,28 +27,20 @@ public abstract class Conta extends Cliente {
 	}
 
 
-
 	public TipoEnum getTipo() {
 		return tipo;
 	}
+	
+	public String getAgencia() {
+		return agencia;
+	}
+
+
 
 	public double getSaldo() {
 		return saldo;
 	}
 
-	public String getAgencia() {
-		return agencia;
-	}
-
-	public void saque(double valor) {
-		this.saldo-=valor;
-	}
-	public void deposito(double valor) {
-		this.saldo+=valor;
-	}
-	public void transferencia(double valor, Conta conta){
-		this.saldo-=valor;
-		conta.deposito(valor);;
-	}
+	
 
 }

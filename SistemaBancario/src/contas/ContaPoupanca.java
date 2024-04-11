@@ -13,6 +13,19 @@ public class ContaPoupanca extends Conta{
 		//rende 0,1% ao dia 
 	}
 	
+	public void saque(double valor) {
+		this.saldo-=valor;
+	}
+	
+	public void deposito(double valor) {
+		this.saldo+=valor;
+	}
+	
+	public void transferencia(double valor, Conta conta){
+		this.saldo-=valor;
+		deposito(valor);
+	}
+	
 	@Override
 	public TipoEnum getTipo() {
 		return super.getTipo().POUPANCA;
