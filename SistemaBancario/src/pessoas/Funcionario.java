@@ -10,8 +10,12 @@ public abstract class Funcionario extends Cliente {
 
 	public String getCargo() {
 		return Cargo;
+		
 	}
-
+	
+	public double calcularCapitalTotal() {
+		return 0;
+	}
 	
 	
 }
