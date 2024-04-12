@@ -1,6 +1,9 @@
 package contas;
 
+import java.io.IOException;
+
 import enums.TipoEnum;
+import io.Leitores;
 
 public class ContaPoupanca extends Conta{
 
@@ -13,16 +16,18 @@ public class ContaPoupanca extends Conta{
 		//rende 0,1% ao dia 
 	}
 	
-	public void saque(double valor) {
+	public void saque(double valor) throws IOException {
 		this.saldo-=valor;
+		Leitores.escritor("teste.txt",-(valor));
 	}
 	
-	public void deposito(double valor) {
+	public void deposito(double valor) throws IOException {
 		this.saldo+=valor;
+		Leitores.escritor("teste.txt",+valor);
 	}
 	
-	public void transferencia(double valor, Conta conta){
-		this.saldo-=valor;
+	public void transferencia(double valor, Conta conta) throws IOException{
+		saque(valor);
 		deposito(valor);
 	}
 	
