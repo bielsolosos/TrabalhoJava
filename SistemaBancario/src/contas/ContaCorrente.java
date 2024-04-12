@@ -8,7 +8,7 @@ import io.Leitores;
 
 public class ContaCorrente extends Conta implements Transacoes{
 
-	public ContaCorrente(int senha, String cpf, double saldo, String agencia) {
+	public ContaCorrente(String senha, String cpf, double saldo, String agencia) {
 		super(senha, cpf, saldo, agencia);
 	}
 	

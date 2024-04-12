@@ -7,7 +7,7 @@ import io.Leitores;
 
 public class ContaPoupanca extends Conta{
 
-	public ContaPoupanca(int senha, String cpf, double saldo, String agencia) {
+	public ContaPoupanca(String senha, String cpf, double saldo, String agencia) {
 		super(senha, cpf, saldo, agencia);
 	}
 

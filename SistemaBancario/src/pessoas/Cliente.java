@@ -1,10 +1,10 @@
 package pessoas;
 
 public class Cliente {
-	private int senha;
+	private String senha;
 	private String cpf;
 
-	public Cliente(int senha, String cpf) {
+	public Cliente(String senha, String cpf) {
 
 		this.senha = senha;
 		this.cpf = cpf;
@@ -14,7 +14,7 @@ public class Cliente {
 		this.cpf = cpf;
 	}
 
-	public int getSenha() {
+	public String getSenha() {
 		return senha;
 	}
 

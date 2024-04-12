@@ -4,7 +4,7 @@ package pessoas;
 public abstract class Funcionario extends Cliente {
 	private String Cargo;
 	
-	public Funcionario(int senha, String cpf) {
+	public Funcionario(String senha, String cpf) {
 		super(senha, cpf);
 	}
 

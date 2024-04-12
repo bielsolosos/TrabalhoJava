@@ -1,17 +1,13 @@
 package application;
 import java.io.IOException;
 
-import contas.CapitalBanco;
-import contas.ContaCorrente;
 import contas.ContaPoupanca;
-import pessoas.Diretor;
-import pessoas.Funcionario;
-import pessoas.Gerente;
-import pessoas.Presidente;
+import menus.MenuPrincipal;
 
-		 public class SistemaInterno {
+public class SistemaInterno {
 		 public static void main(String[] args) throws IOException {
-		 ContaCorrente conta1 = new ContaCorrente(1234, "CPF do Carlos", 22000, "Agencia");
+			 MenuPrincipal.MenuPrincipal();
+		/* ContaCorrente conta1 = new ContaCorrente(1234, "CPF do Carlos", 22000, "Agencia");
 		 ContaPoupanca conta2 = new ContaPoupanca(4321, "CPF do Ale" , 2000, "Agencia");
 		
 		 CapitalBanco.contas.add(conta1);
@@ -24,7 +20,7 @@ import pessoas.Presidente;
 	     
 	     System.out.println("Capital total é: " + p.calcularCapitalTotal());
 	     System.out.println(g.calcularCapitalTotal());
-	     
+	     */
 	    
 	     
 //		conta1.transferencia(100, conta2);

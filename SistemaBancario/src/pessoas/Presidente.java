@@ -5,7 +5,7 @@ import contas.Conta;
 
 public class Presidente extends Funcionario{
 
-	public Presidente(int senha, String cpf) {
+	public Presidente(String senha, String cpf) {
 		super(senha, cpf);
 	}
 
