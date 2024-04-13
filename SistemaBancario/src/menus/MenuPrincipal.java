@@ -1,12 +1,14 @@
 package menus;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import contas.ContaPoupanca;
+import io.Leitores;
 
 public class MenuPrincipal {
 	
-	public static void MenuPrincipal() {
+	public static void MenuPrincipal() throws IOException {
 		Scanner scan = new Scanner(System.in);
 		String opcao = "0";
 		String Continua = "Continua";
@@ -18,9 +20,7 @@ public class MenuPrincipal {
 		opcao = scan.nextLine();
 		switch (opcao) {
 		case "1":
-			System.out.println("Criando conta BB");
-			//Leitores.CriarConta();
-			//TODO: fazer esse método
+			Leitores.CriarConta();
 			break;
 			
 		case "2":
