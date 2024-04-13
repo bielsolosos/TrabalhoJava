@@ -35,6 +35,7 @@ public class MenuPrincipal {
 			}
 		
 		}while(Continua.equals("Continua"));
+		scan.close();
 }
 	
 	
@@ -72,5 +73,6 @@ public class MenuPrincipal {
 				}
 			}
 		}while(true);
+		scan.close();
 	}
 }

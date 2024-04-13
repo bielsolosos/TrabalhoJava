@@ -1,3 +1,3 @@
-1;gerente;1;
-1;2;
-1;0;
+123;cpfCarlos;Gerente;coco;
+78162;cpfMike;Presidente;
+coxinha;cpfGabriel;

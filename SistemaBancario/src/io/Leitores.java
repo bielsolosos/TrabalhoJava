@@ -1,21 +1,12 @@
 package io;
 
-import contas.Conta;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import enums.TipoEnum;
-import pessoas.Cliente;
-import pessoas.Funcionario;
-import pessoas.Gerente;
 
 public class Leitores {
 
@@ -37,6 +28,7 @@ public class Leitores {
 		buffWrite.append(linha + ";");
 		System.out.println("Digite seu CPF: ");
 		linha = sc.nextLine();
+		buffWrite.append(linha + ";");
 		String cargo="";
 			if(linha1.equals("0"))
 			{
@@ -44,17 +36,24 @@ public class Leitores {
 				cargo = sc.nextLine();
 				buffWrite.append(cargo + ";");
 			}
-			else 
+
+			if(cargo.equalsIgnoreCase("gerente")) 
 			{
-				buffWrite.append(linha + ";\n");
-			}
-				if(cargo.equalsIgnoreCase("gerente")) 
-				{
 					System.out.println("Digite sua agencia: ");
 					linha = sc.nextLine();
-					buffWrite.append(linha + ";\n");
-				}
+					buffWrite.append(linha + ";");
+			}
+		sc.close();
+		buffWrite.append("\n");
 		System.out.println("Conta criada com sucesso!");
 		buffWrite.close();
 		}
+	
+//	public void Escritor() throws IOException  {
+//		BufferedReader bf = new BufferedReader(new FileReader("Cadastros.txt"));
+//	}
+	
+	
+	
+	
 	}
