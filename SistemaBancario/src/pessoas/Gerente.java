@@ -1,11 +1,11 @@
 package pessoas;
 
 public class Gerente extends Funcionario {
-	private String Agencia;
+	private String agencia;
 
 	public Gerente(String senha, String cpf, String agencia) {
 		super(senha, cpf);
-		Agencia = agencia;
+		this.agencia = agencia;
 	}
 
 	@Override
