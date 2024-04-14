@@ -3,24 +3,28 @@ import java.io.IOException;
 
 import contas.ContaCorrente;
 import contas.ContaPoupanca;
+import menus.MenuCliente;
 import menus.MenuPrincipal;
 
 public class SistemaInterno {
 		 public static void main(String[] args) throws IOException {
 			 //MenuPrincipal.MenuPrincipal();
+			 MenuCliente.menuCliente();
 			 
 			 
-			 ContaCorrente conta1 = new ContaCorrente("123", "02201103322",0, "0122");
-			 ContaCorrente conta2 = new ContaCorrente("123", "01201412563", 0, "022");
-			 conta1.deposito(300);
-			conta1.saque(20);
-		
-			conta1.transferencia(120, conta2);
-			 System.out.println(conta1.getSaldo());
-			 System.out.println(conta1);
+//				ContaCorrente conta1 = new ContaCorrente("123", "02201103322", 0, "0122");
+//				ContaCorrente conta2 = new ContaCorrente("123", "01201412563", 0, "022");
+//				conta1.deposito(300);
+//				conta1.saque(20);
+//
+//				conta1.transferencia(120, conta2);
+//				System.out.println(conta1.getSaldo());
+//				System.out.println(conta1);
+//
+//				System.out.println(conta1.getHisttoricoOperacoes());
+//				System.out.println(conta2.getHisttoricoOperacoes());
 			 
-			 System.out.println(conta1.getHisttoricoOperacoes());
-			 System.out.println(conta2.getHisttoricoOperacoes());
+			 
 			// System.out.println();
 		/* ContaCorrente conta1 = new ContaCorrente(1234, "CPF do Carlos", 22000, "Agencia");
 		 ContaPoupanca conta2 = new ContaPoupanca(4321, "CPF do Ale" , 2000, "Agencia");

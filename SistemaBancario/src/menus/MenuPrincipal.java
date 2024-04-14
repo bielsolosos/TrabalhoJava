@@ -39,14 +39,7 @@ public class MenuPrincipal {
 }
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	public static void login() {
+	public static void login() throws IOException {
 		Scanner scan = new Scanner(System.in);
 		String LoginDigitado = ""; String SenhaDigitada = "";		
 		do {
@@ -60,6 +53,8 @@ public class MenuPrincipal {
 			String Login = conta2.getCpf();
 			String Senha = conta2.getSenha();
 			if(Login.equals(LoginDigitado) && Senha.equals(SenhaDigitada)) {
+				
+				MenuCliente.menuCliente();
 				//Essa parte aqui a gente vai colocar os menu para chamar diretor e etc
 			}
 			else {
