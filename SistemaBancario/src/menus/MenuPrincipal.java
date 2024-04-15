@@ -3,8 +3,9 @@ package menus;
 import java.io.IOException;
 import java.util.Scanner;
 
-import contas.ContaPoupanca;
+import contas.Conta;
 import io.Leitores;
+import pessoas.Funcionario;
 
 public class MenuPrincipal {
 	
@@ -41,27 +42,39 @@ public class MenuPrincipal {
 	
 	public static void login() throws IOException {
 		Scanner scan = new Scanner(System.in);
-		String LoginDigitado = ""; String SenhaDigitada = "";		
+		String LoginDigitado = ""; String SenhaDigitada = ""; String Pessoa = "";		
 		do {
 			System.out.println("Me diga seu CPF: ");
 			LoginDigitado = scan.nextLine();
 			System.out.println("Me diga sua senha");
 			SenhaDigitada = scan.nextLine();
+			System.out.println("Digite 1 se você for funcionário ou digite 0 caso cliente! ");
+			Pessoa = scan.nextLine();
 			
-			//TODO: atributos mocados, deverão ser scaneados pela classe leitor e comparar para ver se bate com login e senha digitados
-			ContaPoupanca conta2 = new ContaPoupanca("4321", "CPF do Ale" , 2000, "Agencia");
-			String Login = conta2.getCpf();
-			String Senha = conta2.getSenha();
-			if(Login.equals(LoginDigitado) && Senha.equals(SenhaDigitada)) {
-				
-				MenuCliente.menuCliente();
-				//Essa parte aqui a gente vai colocar os menu para chamar diretor e etc
+			if(Pessoa.equals("1")) {
+				Funcionario conta = Leitores.loginFuncinario(SenhaDigitada, LoginDigitado);
+				if(conta != null) {
+					//TODO: Menu Funcionário
+				}
+				else {
+					continue;
+				}
 			}
+			else if(Pessoa.equals("0")) {
+				Conta conta = Leitores.loginCliente(SenhaDigitada, LoginDigitado);
+				if(conta != null) {
+					MenuCliente.menuCliente(conta);
+				}
+				else {
+					continue;
+				}
+			}
+			
 			else {
 				System.out.println("Senha e/ou Login inválidos!\n ");
 				System.out.println("Gostaria de tentar novamente? (s/n)");
 				String Verifica = scan.nextLine();
-				if(Verifica.equalsIgnoreCase("")) {
+				if(Verifica.equalsIgnoreCase("s")) {
 					continue;
 				}else {
 					break;

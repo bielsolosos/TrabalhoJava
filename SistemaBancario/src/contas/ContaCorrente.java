@@ -21,7 +21,7 @@ public class ContaCorrente extends Conta implements Transacoes{
 	public TipoEnum getTipo() {
 		return super.getTipo().CORRENTE;
 	}
-	
+	@Override
 	public void saque(double valor) throws IOException {
 		this.saldo-=valor+0.10;
 		//Leitores.escritor("teste.txt",-(valor+0.10));
@@ -29,7 +29,7 @@ public class ContaCorrente extends Conta implements Transacoes{
 		historicoOperacoes.add("Saque: " + valor);
 		
 	}
-	
+	@Override
 	public void deposito(double valor) throws IOException {
 	
 		this.saldo+=valor-0.10;
@@ -38,7 +38,7 @@ public class ContaCorrente extends Conta implements Transacoes{
 		historicoOperacoes.add("Depósito: " + valor);
 		
 	}
-		
+	@Override
 	public void transferencia(double valor, Conta contaDestino) throws IOException{
 		if (this != contaDestino) {
 			this.saldo-=valor+0.20;			
@@ -53,7 +53,7 @@ public class ContaCorrente extends Conta implements Transacoes{
 	}
 	
 	
-
+	@Override
 	public List<String> getHisttoricoOperacoes() {
 		return historicoOperacoes;
 	}
@@ -67,6 +67,11 @@ public class ContaCorrente extends Conta implements Transacoes{
 				"\nSENHA:" + getSenha() +
 				"\nCPF DO TITULAR: " + getCpf();
 				
+	}
+
+	@Override
+	public double simulacao(int dias, double valor) {
+		return 0;
 	}
 
 }

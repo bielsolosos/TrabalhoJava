@@ -1,5 +1,8 @@
 package contas;
 
+import java.io.IOException;
+import java.util.List;
+
 import enums.TipoEnum;
 import interfaces.Transacoes;
 import pessoas.Cliente;
@@ -41,6 +44,21 @@ public abstract class Conta extends Cliente {
 		return saldo;
 	}
 
+
+
+	public abstract void saque(double valorDoSaque) throws IOException;
+
+	public abstract void deposito(double valor) throws IOException; 
+
+	public abstract void transferencia(double valor, Conta conta) throws IOException;
+
+
+
+	public abstract List<String> getHisttoricoOperacoes();
+
+
+
+	public abstract double simulacao(int dias, double valor);
 	
 
 }
