@@ -10,8 +10,7 @@ public class SistemaInterno {
 		 public static void main(String[] args) throws IOException {
 			 //MenuPrincipal.MenuPrincipal();
 			 MenuCliente.menuCliente();
-			 
-			 
+			 			 
 //				ContaCorrente conta1 = new ContaCorrente("123", "02201103322", 0, "0122");
 //				ContaCorrente conta2 = new ContaCorrente("123", "01201412563", 0, "022");
 //				conta1.deposito(300);

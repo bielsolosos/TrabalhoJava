@@ -3,6 +3,8 @@ package menus;
 import java.io.IOException;
 import java.util.Scanner;
 
+import contas.Conta;
+
 public class MenuCliente {
 	public static void menuCliente() throws IOException {
 		Scanner sc = new Scanner(System.in);
@@ -56,7 +58,7 @@ public class MenuCliente {
 				
 				break;
 			case "2":
-				// TODO Lógica para realizar depósito
+				
 				break;
 			case "3":
 				// TODO Lógica para realizar transferência
