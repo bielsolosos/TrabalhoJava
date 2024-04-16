@@ -54,7 +54,7 @@ public abstract class Conta extends Cliente {
 
 
 
-	public abstract List<String> getHisttoricoOperacoes();
+	public abstract void getHisttoricoOperacoes();
 
 
 

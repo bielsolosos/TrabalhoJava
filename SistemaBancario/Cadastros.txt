@@ -1,5 +1,5 @@
 senha;login;Cliente;Poupanca;1000;agencia;
-senha32;teste;Cliente;Poupanca;1000;agencia;
+senha32;teste;Cliente;Corrente;1000;agencia;
 senha;login;gerente;agencia;	
 senhadoida;cpfdoido;Presidente;
 teste;teste2;gerente;2032;

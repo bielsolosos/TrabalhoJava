@@ -54,8 +54,14 @@ public class ContaCorrente extends Conta implements Transacoes{
 	
 	
 	@Override
-	public List<String> getHisttoricoOperacoes() {
-		return historicoOperacoes;
+	public void getHisttoricoOperacoes(){
+		System.out.println("Para cada saque será cobrado o valor de R$0.10 (dez centavos)\r\n" + " Para cada depósito será cobrado o valor de R$0.10 (dez centavos)\r\n" + " Para cada transferência será cobrado o valor de R$0.20 (dez centavos) que deverá ser cobrado apenas do remetente;"); 
+		if(historicoOperacoes.isEmpty()) {
+			System.out.println("Você ainda não fez nenhuma movimentação");
+		}
+		else {
+		System.out.println(historicoOperacoes); ;
+		}
 	}
 	
 

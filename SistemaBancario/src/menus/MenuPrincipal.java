@@ -9,11 +9,11 @@ import pessoas.Funcionario;
 
 public class MenuPrincipal {
 	
-	public static void MenuPrincipal() throws IOException {
-		Scanner scan = new Scanner(System.in);
+	public static void MenuPrincipal() throws IOException, InterruptedException {
 		String opcao = "0";
 		String Continua = "Continua";
 		do {
+		Scanner scan = new Scanner(System.in);
 		System.out.println("\tMe diga sua opção");
 		System.out.println("1\tCriar conta");
 		System.out.println("2\tLogar na conta");
@@ -25,7 +25,7 @@ public class MenuPrincipal {
 			break;
 			
 		case "2":
-			MenuPrincipal.login();
+			MenuPrincipal.login(scan);
 			break;
 			
 		case "0":
@@ -35,13 +35,12 @@ public class MenuPrincipal {
 			break;
 			}
 		
-		}while(Continua.equals("Continua"));
 		scan.close();
+		}while(Continua.equals("Continua"));
 }
 	
 	
-	public static void login() throws IOException {
-		Scanner scan = new Scanner(System.in);
+	public static void login(Scanner scan) throws IOException, InterruptedException {
 		String LoginDigitado = ""; String SenhaDigitada = ""; String Pessoa = "";		
 		do {
 			System.out.println("Me diga seu CPF: ");
@@ -63,7 +62,7 @@ public class MenuPrincipal {
 			else if(Pessoa.equals("0")) {
 				Conta conta = Leitores.loginCliente(SenhaDigitada, LoginDigitado);
 				if(conta != null) {
-					MenuCliente.menuCliente(conta);
+					MenuCliente.menuCliente(scan,conta);
 				}
 				else {
 					continue;
@@ -81,6 +80,5 @@ public class MenuPrincipal {
 				}
 			}
 		}while(true);
-		scan.close();
 	}
 }

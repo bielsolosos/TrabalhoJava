@@ -8,11 +8,10 @@ import contas.ContaPoupanca;
 import enums.TipoEnum;
 
 public class MenuCliente {
-	public static void menuCliente(Conta conta) throws IOException {
-		Scanner sc = new Scanner(System.in);
+	public static void menuCliente(Scanner sc,Conta conta) throws IOException, InterruptedException {
 		String cabecalho = "║      ♦ ♦ ♦   MENU DO CLIENTE   ♦ ♦ ♦      ║";
-
-		while (true) {
+		String opcao;
+		do {
 			System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
 			System.out.println(cabecalho);
 			System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝");
@@ -20,28 +19,25 @@ public class MenuCliente {
 			System.out.println("\n ▓│ 2 ├─ Relatórios");
 			System.out.println("\n ▓│ 3 ├─ Sair");
 			System.out.println("\n Escolha uma das opções acima: ");
-			String opcao = sc.nextLine();
-
+			opcao = sc.nextLine();
 			switch (opcao) {
 			case "1":
-				movimentacoesConta(conta);
+				movimentacoesConta(sc,conta);
 				break;
 			case "2":
-				relatorios(conta);
+				relatorios(sc,conta);
 				break;
-			case "3":
-				MenuPrincipal.MenuPrincipal();
 			default:
-				System.out.println("Opção inválida!");
+				break;
 			}
-		}
+			sc.close();
+		} while (opcao != "3");
 	}
 
-	private static void movimentacoesConta(Conta conta) throws IOException {
-		Scanner sc = new Scanner(System.in);
-
+	private static void movimentacoesConta(Scanner sc,Conta conta) throws IOException, InterruptedException {
+		String opcao;
 		String cabecalho = "║   ♦ ♦ ♦   MOVIMENTAÇÃO DE CONTA   ♦ ♦ ♦   ║";
-		while (true) {
+		do {
 			System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
 			System.out.println(cabecalho);
 			System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝");
@@ -50,60 +46,43 @@ public class MenuCliente {
 			System.out.println("\n ▒ ▓│ 3 ├─ Transferência para outra conta");
 			System.out.println("\n ▒ ▓│ 4 ├─ Voltar ao menu anterior");
 			System.out.println("\n Escolha uma das opções acima: ");
-			String opcao = sc.nextLine();
+			opcao = sc.nextLine();
 
 			switch (opcao) {
 			case "1":
 				double valorDoSaque = 0;
 				System.out.println("Qual o valor do saque desejado?");
 				valorDoSaque = sc.nextDouble();
-				if(conta.getTipo() == TipoEnum.POUPANCA) {
-					conta.saque(valorDoSaque);
-					System.out.println("Seu saldo atual é de "+conta.getSaldo()+"R$");
-				}
-				else {
-					conta.saque(valorDoSaque);
-					System.out.println("Seu saldo atual é de "+conta.getSaldo()+"R$");
-				}
+				conta.saque(valorDoSaque);
+				System.out.println("Seu saldo atual é de " + conta.getSaldo() + "R$");
+				Thread.sleep(2000);
 				break;
 			case "2":
 				double valorDoDeposito = 0;
 				System.out.println("Qual o valor do deposito desejado?");
 				valorDoDeposito = sc.nextDouble();
-				if(conta.getTipo() == TipoEnum.POUPANCA) {
-					conta.deposito(valorDoDeposito);
-					System.out.println("Seu saldo atual é de "+conta.getSaldo()+"R$");
-				}
-				else {
-					conta.deposito(valorDoDeposito);
-					System.out.println("Seu saldo atual é de "+conta.getSaldo()+"R$");
-				}
+				conta.deposito(valorDoDeposito);
+				System.out.println("Seu saldo atual é de " + conta.getSaldo() + "R$");
+				Thread.sleep(2000);
 				break;
 			case "3":
 				double valorDaTransferencia = 0;
 				System.out.println("Qual o valor do deposito desejado?");
 				valorDaTransferencia = sc.nextDouble();
-				if(conta.getTipo() == TipoEnum.POUPANCA) {
-					conta.deposito(valorDaTransferencia);
-					System.out.println("Seu saldo atual é de "+conta.getSaldo()+"R$");
-				}
-				else {
-					conta.deposito(valorDaTransferencia);
-					System.out.println("Seu saldo atual é de "+conta.getSaldo()+"R$");
-				}
+				conta.deposito(valorDaTransferencia);
+				System.out.println("Seu saldo atual é de " + conta.getSaldo() + "R$");
+				Thread.sleep(2000);
 				break;
-			case "4":
-				menuCliente(conta);
 			default:
-				System.out.println("Opção inválida!");
+				break;
 			}
-		}
+		} while (opcao != "4");
 	}
 
-	private static void relatorios(Conta conta) throws IOException {
-		Scanner sc = new Scanner(System.in);
+	private static void relatorios(Scanner sc,Conta conta) throws IOException, InterruptedException {
+		String opcao;
 		String cabecalho = "║         ♦ ♦ ♦  RELATÓRIOS  ♦ ♦ ♦         ║";
-		while (true) {
+		do {
 			System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
 			System.out.println(cabecalho);
 			System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝");
@@ -112,37 +91,39 @@ public class MenuCliente {
 			System.out.println("\n ▒ ▓│ 3 ├─ Relatório de Rendimento da poupança");
 			System.out.println("\n ▒ ▓│ 4 ├─ Voltar ao menu anterior");
 			System.out.println("\n Escolha uma das opções acima: ");
-			String opcao = sc.nextLine();
+			opcao = sc.nextLine();
 
 			switch (opcao) {
 			case "1":
 				conta.getSaldo();
+				Thread.sleep(2000);
 				break;
 			case "2":
-				if(conta.getHisttoricoOperacoes()!= null) {
-					System.out.println(conta.getHisttoricoOperacoes());
-				}
-				else {
-					System.out.println("Essa é uma operação que só pode ser realizada em uma conta corrent");
+				if (conta.getTipo() == TipoEnum.CORRENTE) {
+					conta.getHisttoricoOperacoes();
+					Thread.sleep(2000);
+				} else {
+					System.out.println("Essa é uma operação que só pode ser realizada em uma conta corrente");
+					Thread.sleep(2000);
 				}
 				break;
 			case "3":
 				System.out.println("Qual o saldo deseja utilizar na simulação?");
 				double valorDoSaldo = sc.nextDouble();
-				System.out.println("Qual o numero de dia?");
+				System.out.println("Qual o numero de dias?");
 				Integer Dias = sc.nextInt();
-				if(conta.simulacao(Dias, valorDoSaldo) != 0) {
-					System.out.println(conta.simulacao(Dias, valorDoSaldo));
-				}
-				else {
+				if (conta.simulacao(Dias, valorDoSaldo) != 0) {
+					System.out.println("O saldo da sua conta será " + conta.simulacao(Dias, valorDoSaldo) + "após "
+							+ Dias + "rendendo na conta");
+					Thread.sleep(2000);
+				} else {
 					System.out.println("Essa é uma operação que só pode ser realizada em uma conta poupança");
+					Thread.sleep(2000);
 				}
 				break;
-			case "4":
-				menuCliente(conta);
 			default:
-				System.out.println("Opção inválida!");
+				break;
 			}
-		}
+		} while (opcao != "4");
 	}
 }

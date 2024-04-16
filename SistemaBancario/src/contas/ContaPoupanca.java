@@ -38,7 +38,6 @@ public class ContaPoupanca extends Conta{
 	}
 
 	@Override
-	public List<String> getHisttoricoOperacoes(){
-		return null;
+	public void getHisttoricoOperacoes(){
 		}
 	}

@@ -7,9 +7,9 @@ import menus.MenuCliente;
 import menus.MenuPrincipal;
 
 public class SistemaInterno {
-		 public static void main(String[] args) throws IOException {
+		 public static void main(String[] args) throws IOException, InterruptedException {
 			 //MenuPrincipal.MenuPrincipal();
-			 MenuPrincipal.MenuPrincipal(); ;
+			 MenuPrincipal.MenuPrincipal();
 			 			 
 //				ContaCorrente conta1 = new ContaCorrente("123", "02201103322", 0, "0122");
 //				ContaCorrente conta2 = new ContaCorrente("123", "01201412563", 0, "022");
