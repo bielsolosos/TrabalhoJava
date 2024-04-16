@@ -8,9 +8,10 @@ import contas.ContaPoupanca;
 import enums.TipoEnum;
 
 public class MenuCliente {
-	public static void menuCliente(Scanner sc,Conta conta) throws IOException, InterruptedException {
+	public static void menuCliente(Scanner sc, Conta conta) throws IOException, InterruptedException {
 		String cabecalho = "║      ♦ ♦ ♦   MENU DO CLIENTE   ♦ ♦ ♦      ║";
 		String opcao;
+		boolean continuar = true;
 		do {
 			System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
 			System.out.println(cabecalho);
@@ -22,21 +23,25 @@ public class MenuCliente {
 			opcao = sc.nextLine();
 			switch (opcao) {
 			case "1":
-				movimentacoesConta(sc,conta);
+				movimentacoesConta(sc, conta);
 				break;
 			case "2":
-				relatorios(sc,conta);
+				relatorios(sc, conta);
+				break;
+			case "3":
+				continuar = false;
 				break;
 			default:
 				break;
 			}
-			sc.close();
-		} while (opcao != "3");
+		} while (continuar);
+		sc.close();
 	}
 
-	private static void movimentacoesConta(Scanner sc,Conta conta) throws IOException, InterruptedException {
+	private static void movimentacoesConta(Scanner sc, Conta conta) throws IOException, InterruptedException {
 		String opcao;
 		String cabecalho = "║   ♦ ♦ ♦   MOVIMENTAÇÃO DE CONTA   ♦ ♦ ♦   ║";
+		boolean continuar = true;
 		do {
 			System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
 			System.out.println(cabecalho);
@@ -53,35 +58,42 @@ public class MenuCliente {
 				double valorDoSaque = 0;
 				System.out.println("Qual o valor do saque desejado?");
 				valorDoSaque = sc.nextDouble();
+				sc.nextLine();
 				conta.saque(valorDoSaque);
-				System.out.println("Seu saldo atual é de " + conta.getSaldo() + "R$");
+				System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());
 				Thread.sleep(2000);
 				break;
 			case "2":
 				double valorDoDeposito = 0;
 				System.out.println("Qual o valor do deposito desejado?");
 				valorDoDeposito = sc.nextDouble();
+				sc.nextLine();
 				conta.deposito(valorDoDeposito);
-				System.out.println("Seu saldo atual é de " + conta.getSaldo() + "R$");
-				Thread.sleep(2000);
+				System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());
+				Thread.sleep(3000);
 				break;
 			case "3":
 				double valorDaTransferencia = 0;
 				System.out.println("Qual o valor do deposito desejado?");
 				valorDaTransferencia = sc.nextDouble();
+				sc.nextLine();
 				conta.deposito(valorDaTransferencia);
-				System.out.println("Seu saldo atual é de " + conta.getSaldo() + "R$");
-				Thread.sleep(2000);
+				System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());
+				Thread.sleep(3000);
+				break;
+			case "4":
+				continuar = false;
 				break;
 			default:
 				break;
 			}
-		} while (opcao != "4");
+		} while (continuar);
 	}
 
-	private static void relatorios(Scanner sc,Conta conta) throws IOException, InterruptedException {
+	private static void relatorios(Scanner sc, Conta conta) throws IOException, InterruptedException {
 		String opcao;
 		String cabecalho = "║         ♦ ♦ ♦  RELATÓRIOS  ♦ ♦ ♦         ║";
+		boolean continuar = true;
 		do {
 			System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
 			System.out.println(cabecalho);
@@ -89,6 +101,8 @@ public class MenuCliente {
 			System.out.println("\n ▒ ▓│ 1 ├─ Saldo");
 			System.out.println("\n ▒ ▓│ 2 ├─ Relatório de tributação da conta corrente");
 			System.out.println("\n ▒ ▓│ 3 ├─ Relatório de Rendimento da poupança");
+			// TODO = rever a opção { 3 } acho que seria melhor trocar a palavra Relatório
+			// por Simulação.
 			System.out.println("\n ▒ ▓│ 4 ├─ Voltar ao menu anterior");
 			System.out.println("\n Escolha uma das opções acima: ");
 			opcao = sc.nextLine();
@@ -96,15 +110,15 @@ public class MenuCliente {
 			switch (opcao) {
 			case "1":
 				conta.getSaldo();
-				Thread.sleep(2000);
+				Thread.sleep(3000);
 				break;
 			case "2":
 				if (conta.getTipo() == TipoEnum.CORRENTE) {
 					conta.getHisttoricoOperacoes();
-					Thread.sleep(2000);
+					Thread.sleep(3000);
 				} else {
 					System.out.println("Essa é uma operação que só pode ser realizada em uma conta corrente");
-					Thread.sleep(2000);
+					Thread.sleep(3000);
 				}
 				break;
 			case "3":
@@ -115,15 +129,19 @@ public class MenuCliente {
 				if (conta.simulacao(Dias, valorDoSaldo) != 0) {
 					System.out.println("O saldo da sua conta será " + conta.simulacao(Dias, valorDoSaldo) + "após "
 							+ Dias + "rendendo na conta");
-					Thread.sleep(2000);
+					Thread.sleep(3000);
 				} else {
 					System.out.println("Essa é uma operação que só pode ser realizada em uma conta poupança");
-					Thread.sleep(2000);
+					Thread.sleep(3000);
 				}
+				break;
+			case "4":
+
+				continuar = false;
 				break;
 			default:
 				break;
 			}
-		} while (opcao != "4");
+		} while (continuar);
 	}
 }
