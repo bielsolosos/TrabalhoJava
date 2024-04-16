@@ -99,7 +99,7 @@ public class MenuCliente {
 			System.out.println(cabecalho);
 			System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝");
 			System.out.println("\n ▒ ▓│ 1 ├─ Saldo");
-			System.out.println("\n ▒ ▓│ 2 ├─ Relatório de tributação da conta corrente");
+			System.out.println("\n ▒ ▓│ 1 ├─ Relatório de tributação da conta corrente");
 			System.out.println("\n ▒ ▓│ 3 ├─ Relatório de Rendimento da poupança");
 			// TODO = rever a opção { 3 } acho que seria melhor trocar a palavra Relatório
 			// por Simulação.

@@ -1,6 +1,8 @@
 package menus;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import contas.Conta;
@@ -8,16 +10,27 @@ import io.Leitores;
 import pessoas.Funcionario;
 
 public class MenuPrincipal {
+	public static final String RESET = "\u001B[0m";
+    public static final String CYAN = "\u001B[36m";
+    
+    public static List<Conta> cadastroGeral = new ArrayList<>();
+    
+
 	
 	public static void MenuPrincipal() throws IOException, InterruptedException {
-		String opcao = "0";
-		String Continua = "Continua";
-		do {
+		String opcao = "0";		
+		String cabecalho = "║      ♦ ♦ ♦   MENU PRINCIPAL   ♦ ♦ ♦      ║";
+		boolean continuar = true;
 		Scanner scan = new Scanner(System.in);
-		System.out.println("\tMe diga sua opção");
-		System.out.println("1\tCriar conta");
-		System.out.println("2\tLogar na conta");
-		System.out.println("0\tEncerrar o Programa");
+		do {
+		System.out.println(CYAN +"╔" + "═".repeat(cabecalho.length() - 2) + "╗");
+		System.out.println(cabecalho);
+		System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝"+ RESET);
+		System.out.println("\n ▓│ 1 ├─ Criar Conta");
+		System.out.println("\n ▓│ 2 ├─ Loga na Conta");
+		System.out.println("\n ▓│ 3 ├─ Encerrar o Programa");		
+		System.out.println("\n *** Escolha uma das opções acima *** ");	
+		
 		opcao = scan.nextLine();
 		switch (opcao) {
 		case "1":
@@ -28,15 +41,18 @@ public class MenuPrincipal {
 			MenuPrincipal.login(scan);
 			break;
 			
-		case "0":
-			Continua = "0";
+		case "3":
+			continuar = false;			
+			System.out.println("\n*** OBRIGADO E VOLTE SEMPRE ***");
+			
+			break;
 			
 		default:
 			break;
 			}
 		
+		}while(continuar);
 		scan.close();
-		}while(Continua.equals("Continua"));
 }
 	
 	
