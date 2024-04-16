@@ -59,8 +59,12 @@ public class MenuCliente {
 				System.out.println("Qual o valor do saque desejado?");
 				valorDoSaque = sc.nextDouble();
 				sc.nextLine();
+				if(valorDoSaque>conta.getSaldo()) {
+				System.out.println("Saldo isuficiente");
+				}
+				else {
 				conta.saque(valorDoSaque);
-				System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());
+				System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());}
 				Thread.sleep(2000);
 				break;
 			case "2":
@@ -74,10 +78,13 @@ public class MenuCliente {
 				break;
 			case "3":
 				double valorDaTransferencia = 0;
-				System.out.println("Qual o valor do deposito desejado?");
+				System.out.println("Qual o valor desejado para transferencia?");
 				valorDaTransferencia = sc.nextDouble();
 				sc.nextLine();
-				conta.deposito(valorDaTransferencia);
+				System.out.println("Digite o numero da conta para qual deseja tranferir?");
+				Conta contaDestino
+				sc.nextLine();
+				conta.transferencia(valorDaTransferencia, contaDestino);
 				System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());
 				Thread.sleep(3000);
 				break;
@@ -99,17 +106,15 @@ public class MenuCliente {
 			System.out.println(cabecalho);
 			System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝");
 			System.out.println("\n ▒ ▓│ 1 ├─ Saldo");
-			System.out.println("\n ▒ ▓│ 1 ├─ Relatório de tributação da conta corrente");
-			System.out.println("\n ▒ ▓│ 3 ├─ Relatório de Rendimento da poupança");
-			// TODO = rever a opção { 3 } acho que seria melhor trocar a palavra Relatório
-			// por Simulação.
+			System.out.println("\n ▒ ▓│ 2 ├─ Relatório de tributação da conta corrente");
+			System.out.println("\n ▒ ▓│ 3 ├─ Simulação de Rendimento da poupança");
 			System.out.println("\n ▒ ▓│ 4 ├─ Voltar ao menu anterior");
 			System.out.println("\n Escolha uma das opções acima: ");
 			opcao = sc.nextLine();
 
 			switch (opcao) {
 			case "1":
-				conta.getSaldo();
+				System.out.println(conta.getSaldo());
 				Thread.sleep(3000);
 				break;
 			case "2":
@@ -127,8 +132,8 @@ public class MenuCliente {
 				System.out.println("Qual o numero de dias?");
 				Integer Dias = sc.nextInt();
 				if (conta.simulacao(Dias, valorDoSaldo) != 0) {
-					System.out.println("O saldo da sua conta será " + conta.simulacao(Dias, valorDoSaldo) + "após "
-							+ Dias + "rendendo na conta");
+					System.out.println("O saldo da sua conta será " + conta.simulacao(Dias, valorDoSaldo) + " após "
+							+ Dias + "dias rendendo na conta");
 					Thread.sleep(3000);
 				} else {
 					System.out.println("Essa é uma operação que só pode ser realizada em uma conta poupança");
