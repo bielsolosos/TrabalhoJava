@@ -8,8 +8,8 @@ import io.Leitores;
 
 public class ContaPoupanca extends Conta{
 
-	public ContaPoupanca(String senha, String cpf, double saldo, String agencia) {
-		super(senha, cpf, saldo, agencia);
+	public ContaPoupanca(String senha, String cpf, String NumeroConta, double saldo, String agencia) {
+		super(senha, cpf, NumeroConta, saldo, agencia); 
 	}
 	@Override
 	public double simulacao(int dias, double valor) {
@@ -38,6 +38,12 @@ public class ContaPoupanca extends Conta{
 	}
 
 	@Override
+	public String toString() {
+		return "ContaPoupanca [getAgencia()=" + getAgencia() + ", getSaldo()=" + getSaldo() + ", getSenha()="
+				+ getSenha() + ", getCpf()=" + getCpf() + ", getNumeroConta()=" + getNumeroConta() + "]";
+	}
+	
+
 	public void getHisttoricoOperacoes(){
 		}
 	}

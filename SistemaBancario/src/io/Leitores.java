@@ -27,32 +27,91 @@ public class Leitores {
 	public static void CriarConta() throws IOException {
 		Scanner sc = new Scanner(System.in);
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter("Cadastros.txt", true));
-		System.out.println("Caso cliente, digite 1 | Caso funcionario, digite 0: ");
-		String linha1 = sc.nextLine();
+		
+		/*System.out.println("Caso cliente, digite 1 | Caso funcionario, digite 0: ");
+		String linha1 = sc.nextLine();*/
 		String linha = "";
+		
 		System.out.println("Digite sua senha: ");
 		linha = sc.nextLine();
 		buffWrite.append(linha + ";");
+		
 		System.out.println("Digite seu CPF: ");
 		linha = sc.nextLine();
 		buffWrite.append(linha + ";");
-		String cargo = "";
-		if (linha1.equals("0")) {
-			System.out.println("Digite seu Cargo: ");
-			cargo = sc.nextLine();
-			buffWrite.append(cargo + ";");
+		
+		System.out.println("Digite seu Numero da Conta: ");
+		linha = sc.nextLine();
+		buffWrite.append(linha + ";");
+		
+		System.out.println("Caso cliente, digite 1 | Caso funcionario, digite 0: ");
+		String Tipo = sc.nextLine();
+			switch(Tipo) {
+				case "1":
+					buffWrite.append("Cliente" + ";");
+					System.out.println("Caso seja uma Conta Poupança, digite 1 | Caso seja uma conta corrente digite 0");
+					String Tipo_Conta = sc.nextLine();
+						switch(Tipo_Conta) {
+							case "1":
+								buffWrite.append("Poupanca" + ";");
+								System.out.println("Me diga seu Deposito inicial");
+								String depositoInicial = sc.nextLine();
+								buffWrite.append(depositoInicial + ";");
+								System.out.println("Me diga sua Agência");
+								String agencia1 = sc.nextLine();
+								buffWrite.append(agencia1 + ";");;
+								break;
+							case "0":
+								buffWrite.append("Corrente" + ";");
+								System.out.println("Me diga seu Deposito inicial");
+								String depositoInicial1 = sc.nextLine();
+								buffWrite.append(depositoInicial1 + ";");
+								System.out.println("Me diga sua Agência");
+								String agencia2 = sc.nextLine();
+								buffWrite.append(agencia2 + ";");;
+								break;
+						}
+					break;
+					
+				case "0":
+					System.out.println("Escolha um dos 3 tipos de Funcionário:");
+					System.out.println("(1) Gerente");
+					System.out.println("(2) Diretor");
+					System.out.println("(3) Presidente");
+					String veri = sc.nextLine();
+					switch(veri) {
+						case "1":
+							buffWrite.append("Gerente" + ";");
+							System.out.println("Me diga seu Deposito inicial");
+							String depositoInicial = sc.nextLine();
+							buffWrite.append(depositoInicial + ";");
+							System.out.println("Me diga sua Agência");
+							String agencia2 = sc.nextLine();
+							buffWrite.append(agencia2 + ";");
+							break;
+						case "2":
+							buffWrite.append("Diretor" + ";");
+							System.out.println("Me diga seu Deposito inicial");
+							String depositoInicial1 = sc.nextLine();
+							buffWrite.append(depositoInicial1 + ";");
+							break;
+						case "3":
+							buffWrite.append("Presidente" + ";");
+							System.out.println("Me diga seu Deposito inicial");
+							String depositoInicial2 = sc.nextLine();
+							buffWrite.append(depositoInicial2 + ";");
+							Tipo = "1";
+							break;
+					}
+					break;
+					
 		}
+			buffWrite.append("\n");
+			buffWrite.close();
+			System.out.println("Conta criada com sucesso!");
+}
 
-		if (cargo.equalsIgnoreCase("gerente")) {
-			System.out.println("Digite sua agencia: ");
-			linha = sc.next();
-			buffWrite.append(linha + ";");
-		}
-		buffWrite.append("\n");
-		System.out.println("Conta criada com sucesso!");
-		buffWrite.close();
 
-	}
 
 	public static Funcionario loginFuncinario(String senha, String Cpf) {
 	    	try {
@@ -60,23 +119,22 @@ public class Leitores {
 	    		 String linha;
 	    		 while((linha = ler.readLine()) != null) {
 	    			 String[] lista = linha.split(";");
-	    			 if(lista[2].equalsIgnoreCase("gerente") && lista[0].equalsIgnoreCase(senha) && lista[1].equalsIgnoreCase(Cpf)) {
-	    				 return new Gerente(lista[0], lista[1], lista[2]);
+	    			 if(lista[3].equalsIgnoreCase("Gerente") && lista[0].equalsIgnoreCase(senha) && lista[1].equalsIgnoreCase(Cpf)) {
+	    				 return new Gerente(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]), lista[5]);
 	    			 }
 	    			 
-	    			 else if(lista[2].equalsIgnoreCase("presidente") && lista[0].equalsIgnoreCase(senha) && lista[1].equalsIgnoreCase(Cpf)) {
-	    				 return new Presidente(lista[0], lista[1]);
+	    			 else if(lista[3].equalsIgnoreCase("Presidente") && lista[0].equalsIgnoreCase(senha) && lista[1].equalsIgnoreCase(Cpf)) {
+	    				 return new Presidente(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]));
 	    			 }
 	    			 
-	    			 else if(lista[2].equalsIgnoreCase("diretor") && lista[0].equalsIgnoreCase(senha) && lista[1].equalsIgnoreCase(Cpf)) {
-	    				 return new Diretor(lista[0], lista[1]);
+	    			 else if(lista[3].equalsIgnoreCase("Diretor") && lista[0].equalsIgnoreCase(senha) && lista[1].equalsIgnoreCase(Cpf)) {
+	    				 return new Diretor(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]));
 	    			 }
 	    			 else {
 	    				 continue;
 	    			 }
-	    			 
 	    		 }
-	    		 
+	    		 ler.close();
 	    		 
 	    	}catch(IOException e) {
 	    		e.printStackTrace();
@@ -92,14 +150,14 @@ public class Leitores {
 			while ((linha = ler.readLine()) != null) {
 				String[] lista = linha.split(";");
 
-				if (lista.length == 6 && lista[0].trim().equalsIgnoreCase(senha) && lista[1].trim().equalsIgnoreCase(Cpf)) {
-					if (lista[3].equalsIgnoreCase("Poupanca")) {
+				if (lista[0].trim().equalsIgnoreCase(senha) && lista[1].trim().equalsIgnoreCase(Cpf)) {
+					if (lista[4].equalsIgnoreCase("Poupanca")) {
 						ler.close();
-						return new ContaPoupanca(lista[0], lista[1], Double.parseDouble(lista[4]), lista[5]);
+						return new ContaPoupanca(lista[0], lista[1], lista[2], Double.parseDouble(lista[5]), lista[6]);
 
-					} else if (lista[3].equalsIgnoreCase("Corrente")) {
+					} else if (lista[4].equalsIgnoreCase("Corrente")) {
 						ler.close();
-						return new ContaCorrente(lista[0], lista[1], Double.parseDouble(lista[4]), lista[5]);
+						return new ContaCorrente(lista[0], lista[1], lista[2], Double.parseDouble(lista[5]), lista[6]);
 
 					}
 				}

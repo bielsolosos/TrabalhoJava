@@ -1,15 +1,22 @@
 package application;
 import java.io.IOException;
 
-import contas.ContaCorrente;
-import contas.ContaPoupanca;
-import menus.MenuCliente;
-import menus.MenuPrincipal;
+import contas.Conta;
+import io.Leitores;
+import pessoas.Funcionario;
 
 public class SistemaInterno {
 		 public static void main(String[] args) throws IOException, InterruptedException {
+			 
+			 Conta conta0 = Leitores.loginCliente("123", "cpf");
+			 Funcionario Conta1 = Leitores.loginFuncinario("Senha", "Cepefe");
+			 Funcionario Conta2 = Leitores.loginFuncinario("Senha1", "Cepefe1");
+			 System.out.println(conta0.toString() + "\n");
+			 System.out.println(Conta1.toString() + "\n");
+			 System.out.println(Conta2.toString() + "\n");
+
 			 //MenuPrincipal.MenuPrincipal();
-			 MenuPrincipal.MenuPrincipal();
+			 //MenuPrincipal.MenuPrincipal();
 			 			 
 //				ContaCorrente conta1 = new ContaCorrente("123", "02201103322", 0, "0122");
 //				ContaCorrente conta2 = new ContaCorrente("123", "01201412563", 0, "022");

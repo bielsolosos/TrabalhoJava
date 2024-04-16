@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import pessoas.Gerente;
+
 public class MenuGerente {
 	 private Gerente gerente;
 

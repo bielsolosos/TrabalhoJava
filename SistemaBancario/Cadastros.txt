@@ -1,6 +1,3 @@
-senha;login;Cliente;Poupanca;1000;agencia;
-senha32;teste;Cliente;Corrente;1000;agencia;
-senha;login;gerente;agencia;	
-senhadoida;cpfdoido;Presidente;
-teste;teste2;gerente;2032;
-senha69;teste69;Cliente;Poupanca;1000;agencia;
+123;cpf;Bagulho;Cliente;Poupanca;1000;agencia;
+Senha;Cepefe;NumeroCepefe;Gerente;3213;3;
+Senha1;Cepefe1;1231;Presidente;7000000;

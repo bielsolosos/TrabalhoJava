@@ -12,8 +12,8 @@ public class ContaCorrente extends Conta implements Transacoes{
 	
 	private List<String> historicoOperacoes;
 
-	public ContaCorrente(String senha, String cpf, double saldo, String agencia) {
-		super(senha, cpf, saldo, agencia);
+	public ContaCorrente(String senha, String cpf, String NumeroConta, double saldo, String agencia) {
+		super(senha, cpf, NumeroConta, saldo, agencia);
 		this.historicoOperacoes = new ArrayList<String>();
 	}
 	
