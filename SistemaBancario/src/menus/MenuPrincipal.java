@@ -66,10 +66,9 @@ public class MenuPrincipal {
 			Conta conta = Leitores.login(SenhaDigitada, LoginDigitado);
 			if(conta.getTipo().equals(TipoEnum.POUPANCA) || conta.getTipo().equals(TipoEnum.CORRENTE)) {
 				MenuCliente.menuCliente(scan,conta);
-			}else if(conta.getTipo() == TipoEnum.GERENTE) {
-				//Todo Por menuGerente feito aqui e tirar o continue
-				System.out.println("MenuGerente");
-				continue;
+			}else if(conta.getTipo() == TipoEnum.GERENTE) {				
+				MenuGerente.menuGerente(conta);
+				
 			}else if(conta.getTipo() == TipoEnum.DIRETOR) {
 				//TODO Mesma coisa
 				System.out.println("MenuDiretor");
