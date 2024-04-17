@@ -6,8 +6,8 @@ import enums.TipoEnum;
 public abstract class Funcionario extends Conta {
 	private String Cargo;
 	
-	public Funcionario(String senha, String cpf, String NumeroConta, double Saldo) {
-		super(senha, cpf, NumeroConta, Saldo);
+	public Funcionario(String senha, String cpf, String NumeroConta, String Nome, double Saldo) {
+		super(senha, cpf, NumeroConta, Nome, Saldo);
 	}
 
 	public TipoEnum getCargo() {

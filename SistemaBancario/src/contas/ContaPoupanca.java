@@ -8,8 +8,8 @@ import io.Leitores;
 
 public class ContaPoupanca extends Conta{
 
-	public ContaPoupanca(String senha, String cpf, String NumeroConta, double saldo, String agencia) {
-		super(senha, cpf, NumeroConta, saldo, agencia); 
+	public ContaPoupanca(String senha, String cpf, String NumeroConta, String Nome, double saldo, String agencia) {
+		super(senha, cpf, NumeroConta, Nome, saldo, agencia); 
 	}
 	@Override
 	public double simulacao(int dias, double valor) {

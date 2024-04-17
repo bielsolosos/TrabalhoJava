@@ -5,13 +5,15 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import contas.Conta;
 import contas.ContaCorrente;
 import contas.ContaPoupanca;
 import pessoas.Diretor;
-import pessoas.Funcionario;
 import pessoas.Gerente;
 import pessoas.Presidente;
 
@@ -44,6 +46,12 @@ public class Leitores {
 		linha = sc.nextLine();
 		buffWrite.append(linha + ";");
 		System.out.println("");
+		
+		System.out.println(" *** Digite seu Nome: ");
+		linha = sc.nextLine();
+		buffWrite.append(linha + ";");
+		System.out.println("");
+		
 		System.out.println(" *** Caso cliente, digite 1 ║ Caso funcionario, digite 0 : ");
 		String Tipo = sc.nextLine();
 		switch (Tipo) {
@@ -102,7 +110,6 @@ public class Leitores {
 				System.out.println(" *** Me diga seu Depósito inicial: ");
 				String depositoInicial2 = sc.nextLine();
 				buffWrite.append(depositoInicial2 + ";");
-				Tipo = "1";
 				break;
 			}
 			break;
@@ -125,23 +132,23 @@ public class Leitores {
 				String[] lista = linha.split(";");
 
 				if (lista[0].trim().equalsIgnoreCase(senha) && lista[1].trim().equalsIgnoreCase(Cpf)) {
-					if (lista[3].equalsIgnoreCase("Poupanca")) {
+					if (lista[4].equalsIgnoreCase("Poupanca")) {
 						ler.close();
-						return new ContaPoupanca(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]), lista[5]);
+						return new ContaPoupanca(lista[0], lista[1], lista[2], lista[3], Double.parseDouble(lista[5]), lista[6]);
 
-					} else if (lista[3].equalsIgnoreCase("Corrente")) {
+					} else if (lista[4].equalsIgnoreCase("Corrente")) {
 						ler.close();
-						return new ContaCorrente(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]), lista[5]);
+						return new ContaCorrente(lista[0], lista[1], lista[2], lista[3], Double.parseDouble(lista[5]), lista[6]);
 
-					} else if (lista[3].equalsIgnoreCase("Gerente")) {
+					} else if (lista[4].equalsIgnoreCase("Gerente")) {
 						ler.close();
-						return new Gerente(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]), lista[5]);
-					} else if(lista[3].equalsIgnoreCase("Diretor")) {
+						return new Gerente(lista[0], lista[1], lista[2], lista[3], Double.parseDouble(lista[5]), lista[6]);
+					} else if(lista[4].equalsIgnoreCase("Diretor")) {
 						ler.close();
-						return new Diretor(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]));
-					} else if(lista[3].equalsIgnoreCase("Presidente")) {
+						return new Diretor(lista[0], lista[1], lista[2], lista[3], Double.parseDouble(lista[5]));
+					} else if(lista[4].equalsIgnoreCase("Presidente")) {
 						ler.close();
-						return new Presidente(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]));
+						return new Presidente(lista[0], lista[1], lista[2], lista[3], Double.parseDouble(lista[5]));
 					} else {
 						continue;
 					}
@@ -164,22 +171,22 @@ public class Leitores {
 			while((linha = ler.readLine()) != null) {
 				String[] lista = linha.split(";");
 				if(lista[2].equalsIgnoreCase(NumeroConta)) {
-					if (lista[3].equalsIgnoreCase("Poupanca")) {
+					if (lista[4].equalsIgnoreCase("Poupanca")) {
 						ler.close();
-						return new ContaPoupanca(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]), lista[5]);
+						return new ContaPoupanca(lista[0], lista[1], lista[2], lista[3], Double.parseDouble(lista[5]), lista[6]);
 
-						} else if (lista[3].equalsIgnoreCase("Corrente")) {
+						} else if (lista[4].equalsIgnoreCase("Corrente")) {
 							ler.close();
-							return new ContaCorrente(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]), lista[5]);
-						} else if (lista[3].equalsIgnoreCase("Gerente")) {
+							return new ContaCorrente(lista[0], lista[1], lista[2], lista[3], Double.parseDouble(lista[5]), lista[6]);
+						} else if (lista[4].equalsIgnoreCase("Gerente")) {
 							ler.close();
-							return new Gerente(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]), lista[5]);
-						} else if(lista[3].equalsIgnoreCase("Diretor")) {
+							return new Gerente(lista[0], lista[1], lista[2], lista[3], Double.parseDouble(lista[5]), lista[6]);
+						} else if(lista[4].equalsIgnoreCase("Diretor")) {
 							ler.close();
-							return new Diretor(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]));
-						} else if(lista[3].equalsIgnoreCase("Presidente")) {
+							return new Diretor(lista[0], lista[1], lista[2], lista[3], Double.parseDouble(lista[5]));
+						} else if(lista[4].equalsIgnoreCase("Presidente")) {
 							ler.close();
-							return new Presidente(lista[0], lista[1], lista[2], Double.parseDouble(lista[4]));
+							return new Presidente(lista[0], lista[1], lista[2], lista[3], Double.parseDouble(lista[5]));
 						} else {
 							continue;
 						}
@@ -202,7 +209,7 @@ public class Leitores {
 		String linha = "";
 		while ((linha = ler.readLine()) != null) {
 			String[] lista = linha.split(";");
-			Valor += Double.parseDouble(lista[4]);
+			Valor += Double.parseDouble(lista[5]);
 		}
 		return Valor;
 		}catch(IOException e){
@@ -211,27 +218,53 @@ public class Leitores {
 		}
 	}
 	
-	public static double RelatorioGerente(String Agencia) {
-		double Valor = 0;
+	public static void RelatorioGerente(String Agencia) {
+		int Quantidade = 0;
 		
 		try {
 		BufferedReader ler = new BufferedReader(new FileReader("Cadastros.txt"));
 		String linha = "";
 		while ((linha = ler.readLine()) != null) {
 			String[] lista = linha.split(";");
-			if(!lista[3].equals("Diretor") && !lista[3].equals("Presidente")) {
-				if(lista[5].equals(Agencia)) {
-					Valor += Double.parseDouble(lista[4]);
+			if(!lista[4].equals("Diretor") && !lista[4].equals("Presidente")) {
+				if(lista[6].equals(Agencia)) {
+					Quantidade++;
 				}
 			}
 			else {
 				continue;
 			}
 		}
-		return Valor;
+		
+		System.out.println("Esse gerente possuí " + Quantidade + " Clientes em sua Agência");
 		}catch(IOException e){
+			
 			e.printStackTrace();
-			return (Double) null;
+		}
+	}
+	
+	public static void RelatorioDiretor() {
+		try {
+		BufferedReader ler = new BufferedReader(new FileReader("Cadastros.txt"));
+		HashMap<String, String> Nomes = new HashMap<>();
+		String linha;
+		while ((linha = ler.readLine()) != null) {
+				String[] lista = linha.split(";");
+				if(lista[4].equals("Poupanca") || lista[4].equals("Corrente")) {
+					String Lista_aux = ("Nome: " + lista[3] + " Cpf: " + lista[1] + " Agência: " + lista[6]);
+					Nomes.put(lista[3], Lista_aux);
+				}
+			}
+		ler.close();
+		 ArrayList<String> nomesOrdenados = new ArrayList<>(Nomes.keySet());
+         Collections.sort(nomesOrdenados);
+		
+         for(String nome : nomesOrdenados) {
+        	 System.out.println(Nomes.get(nome));
+         }
+		
+		}catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

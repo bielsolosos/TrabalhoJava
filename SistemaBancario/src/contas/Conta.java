@@ -11,24 +11,24 @@ public abstract class Conta extends Cliente {
 	private String agencia;
 	private TipoEnum tipo;
 		
-	public Conta(String senha, String cpf, String NumeroConta, double saldo, String agencia, TipoEnum tipo) {
-		super(senha, cpf, NumeroConta);
+	public Conta(String senha, String cpf, String NumeroConta, String Nome, double saldo, String agencia, TipoEnum tipo) {
+		super(senha, cpf, NumeroConta, Nome);
 		this.saldo = saldo;
 		this.agencia = agencia;
 		this.tipo = tipo;
 	}
 
 
-	public Conta(String senha, String cpf, String NumeroConta, double saldo, String agencia) {
-		super(senha, cpf, NumeroConta);
+	public Conta(String senha, String cpf, String NumeroConta, String Nome, double saldo, String agencia) {
+		super(senha, cpf, NumeroConta, Nome);
 		this.saldo = saldo;
 		this.agencia = agencia;
 	}
 
 	
 
-	public Conta(String senha, String cpf, String NumeroConta, double saldo) {
-		super(senha, cpf, NumeroConta);
+	public Conta(String senha, String cpf, String NumeroConta, String Nome, double saldo) {
+		super(senha, cpf, NumeroConta, Nome);
 		this.saldo = saldo;
 	}
 

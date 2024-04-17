@@ -4,10 +4,11 @@ public class Cliente {
 	private String senha;
 	private String cpf;
 	private String numeroConta;
+	private String Nome;
 
 
 
-	public Cliente(String senha, String cpf, String NumeroConta) {
+	public Cliente(String senha, String cpf, String NumeroConta, String Nome) {
 		super();
 		this.senha = senha;
 		this.cpf = cpf;
@@ -30,6 +31,18 @@ public class Cliente {
 	public String getSenha() {
 		return senha;
 	}
+
+	public String getNome() {
+		return Nome;
+	}
+
+
+
+	public void setNome(String nome) {
+		Nome = nome;
+	}
+
+
 
 	public String getCpf() {
 		return cpf;

@@ -10,8 +10,8 @@ import io.Leitores;
 
 public class Presidente extends Funcionario{
 
-	public Presidente(String senha, String cpf, String NumeroConta, double Saldo) {
-		super(senha, cpf, NumeroConta, Saldo);
+	public Presidente(String senha, String cpf, String NumeroConta, String Nome, double Saldo) {
+		super(senha, cpf, NumeroConta, Nome, Saldo);
 	}
 
 	@Override

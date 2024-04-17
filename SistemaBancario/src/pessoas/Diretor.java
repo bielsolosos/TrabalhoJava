@@ -9,8 +9,8 @@ import io.Leitores;
 
 public class Diretor extends Funcionario {
 
-	public Diretor(String senha, String cpf, String NumeroConta, double Saldo) {
-		super(senha, cpf, NumeroConta, Saldo);
+	public Diretor(String senha, String cpf, String NumeroConta, String Nome, double Saldo) {
+		super(senha, cpf, NumeroConta, Nome, Saldo);
 	}
 	private List<String> historicoOperacoes;
 
