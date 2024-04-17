@@ -60,7 +60,7 @@ public class ContaCorrente extends Conta implements Transacoes{
 			System.out.println("Você ainda não fez nenhuma movimentação");
 		}
 		else {
-		System.out.println(historicoOperacoes); ;
+		System.out.println(historicoOperacoes);
 		}
 	}
 	
