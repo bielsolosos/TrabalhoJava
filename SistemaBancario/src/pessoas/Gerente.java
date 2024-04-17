@@ -53,7 +53,7 @@ public class Gerente extends Funcionario {
 	@Override
 	public void transferencia(double valor, Conta contaDestino) throws IOException{
 		if (this != contaDestino) {
-			this.saldo-=valor+0.20;			
+			this.saldo-=valor;			
 			contaDestino.saldo+=valor;
 			Leitores.escritor("teste.txt",-valor);
 			Leitores.escritor("teste.txt",+valor);

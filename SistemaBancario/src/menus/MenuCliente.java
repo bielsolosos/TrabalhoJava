@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import contas.Conta;
-import contas.ContaPoupanca;
+import contas.ContaCorrente;
 import enums.TipoEnum;
 import io.Leitores;
 
@@ -98,6 +98,7 @@ public class MenuCliente {
 	}
 
 	private static void relatorios(Scanner sc, Conta conta) throws IOException, InterruptedException {
+		//TODO menu duplicado
 		String opcao;
 		String cabecalho = "║         ♦ ♦ ♦  RELATÓRIOS  ♦ ♦ ♦         ║";
 		boolean continuar = true;
@@ -114,26 +115,28 @@ public class MenuCliente {
 
 			switch (opcao) {
 			case "1":
-				System.out.println(conta.getSaldo());
+				System.out.println("Seu saldo atual é de R$ "+conta.getSaldo());
 				Thread.sleep(3000);
 				break;
 			case "2":
 				if (conta.getTipo() == TipoEnum.CORRENTE) {
-					conta.getHisttoricoOperacoes();
-					Thread.sleep(3000);
-				} else {
-					System.out.println("Essa é uma operação que só pode ser realizada em uma conta corrente");
-					Thread.sleep(3000);
-				}
+		            System.out.println("Total gasto em taxas: R$ " + ContaCorrente.TotalTaxas());
+		            System.out.println("Taxas por operação:");
+		            System.out.println("Saque: R$0.10");
+		            System.out.println("Depósito: R$0.10");
+		            System.out.println("Transferência: R$0.20 (cobrada apenas do remetente)");
+		        } else {
+		            System.out.println("Essa operação só pode ser realizada em uma conta corrente.");
+		        }
 				break;
 			case "3":
 				System.out.println("Qual o saldo deseja utilizar na simulação?");
 				double valorDoSaldo = sc.nextDouble();
 				System.out.println("Qual o numero de dias?");
 				Integer Dias = sc.nextInt();
-				if (conta.simulacao(Dias, valorDoSaldo) != 0) {
+				if (conta.getTipo() == TipoEnum.POUPANCA) {
 					System.out.println("O saldo da sua conta será " + conta.simulacao(Dias, valorDoSaldo) + " após "
-							+ Dias + "dias rendendo na conta");
+							+ Dias + " dias rendendo na conta");
 					Thread.sleep(3000);
 				} else {
 					System.out.println("Essa é uma operação que só pode ser realizada em uma conta poupança");

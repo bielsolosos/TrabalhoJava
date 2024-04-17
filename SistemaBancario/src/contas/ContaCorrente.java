@@ -1,5 +1,7 @@
 package contas;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +26,8 @@ public class ContaCorrente extends Conta implements Transacoes{
 	@Override
 	public void saque(double valor) throws IOException {
 		this.saldo-=valor+0.10;
-		//Leitores.escritor("teste.txt",-(valor+0.10));
-		//Leitores.escritor("teste.txt",0.10);
+		Leitores.escritor("teste.txt",-(valor+0.10));
+		Leitores.escritor("taxas.txt",0.10);
 		historicoOperacoes.add("Saque: " + valor);
 		
 	}
@@ -34,9 +36,8 @@ public class ContaCorrente extends Conta implements Transacoes{
 	
 		this.saldo+=valor-0.10;
 		Leitores.escritor("teste.txt",+(valor-0.10));
-		Leitores.escritor("teste.txt",0.10);
-		historicoOperacoes.add("Depósito: " + valor);
-		
+		Leitores.escritor("taxas.txt",0.10);
+		historicoOperacoes.add("Depósito: " + valor);		
 	}
 	
 	@Override
@@ -46,7 +47,7 @@ public class ContaCorrente extends Conta implements Transacoes{
 			contaDestino.saldo+=valor;
 			Leitores.escritor("teste.txt",-(valor+0.20));
 			Leitores.escritor("teste.txt",+valor);
-			Leitores.escritor("teste.txt",0.20);
+			Leitores.escritor("taxas.txt",0.20);
 			historicoOperacoes.add("Transferência: " +  valor);
 			
 		}
@@ -80,5 +81,22 @@ public class ContaCorrente extends Conta implements Transacoes{
 	public double simulacao(int dias, double valor) {
 		return 0;
 	}
-
+	
+	@SuppressWarnings("null")
+	public static double TotalTaxas() throws IOException{
+	double Valor = 0;
+		
+		try {
+		BufferedReader ler = new BufferedReader(new FileReader("taxas.txt"));
+		String linha = "";
+		while ((linha = ler.readLine()) != null) {
+			String[] lista = linha.split(";");
+			Valor += Double.parseDouble(lista[4]);
+		}
+		return Valor;
+		}catch(IOException e){
+			e.printStackTrace();
+			return (Double) null;
+		}
+	}
 }
