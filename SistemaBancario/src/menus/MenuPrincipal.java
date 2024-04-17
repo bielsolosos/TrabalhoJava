@@ -57,7 +57,7 @@ public class MenuPrincipal {
 	
 	
 	public static void login(Scanner scan) throws IOException, InterruptedException {
-		String LoginDigitado = ""; String SenhaDigitada = "";
+		String LoginDigitado = ""; String SenhaDigitada = ""; int veri = 0;
 		do {
 			System.out.println("Me diga seu CPF: ");
 			LoginDigitado = scan.nextLine();
@@ -65,8 +65,10 @@ public class MenuPrincipal {
 			SenhaDigitada = scan.nextLine();
 			Conta conta = Leitores.login(SenhaDigitada, LoginDigitado);
 			if(conta.getTipo().equals(TipoEnum.POUPANCA) || conta.getTipo().equals(TipoEnum.CORRENTE)) {
+				veri = 1;
 				MenuCliente.menuCliente(scan,conta);
-			}else if(conta.getTipo() == TipoEnum.GERENTE || conta.getTipo() == TipoEnum.DIRETOR || conta.getTipo() == TipoEnum.PRESIDENTE) {				
+			}else if(conta.getTipo() == TipoEnum.GERENTE || conta.getTipo() == TipoEnum.DIRETOR || conta.getTipo() == TipoEnum.PRESIDENTE) {	
+				veri = 1;
 				MenuGerente.menuGerente(conta);
 			}
 			else {
@@ -79,6 +81,6 @@ public class MenuPrincipal {
 					break;
 				}
 			}
-		}while(true);
+		}while(veri == 1);
 	}
 }
