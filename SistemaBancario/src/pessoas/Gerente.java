@@ -55,9 +55,9 @@ public class Gerente extends Funcionario {
 		if (this != contaDestino) {
 			this.saldo-=valor+0.20;			
 			contaDestino.saldo+=valor;
-			Leitores.escritor("teste.txt",-(valor+0.20));
+			Leitores.escritor("teste.txt",-valor);
 			Leitores.escritor("teste.txt",+valor);
-			Leitores.escritor("teste.txt",0.20);}
+			}
 	}
 
 	@Override
