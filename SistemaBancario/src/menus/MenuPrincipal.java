@@ -66,17 +66,8 @@ public class MenuPrincipal {
 			Conta conta = Leitores.login(SenhaDigitada, LoginDigitado);
 			if(conta.getTipo().equals(TipoEnum.POUPANCA) || conta.getTipo().equals(TipoEnum.CORRENTE)) {
 				MenuCliente.menuCliente(scan,conta);
-			}else if(conta.getTipo() == TipoEnum.GERENTE) {				
+			}else if(conta.getTipo() == TipoEnum.GERENTE || conta.getTipo() == TipoEnum.DIRETOR || conta.getTipo() == TipoEnum.PRESIDENTE) {				
 				MenuGerente.menuGerente(conta);
-				
-			}else if(conta.getTipo() == TipoEnum.DIRETOR) {
-				//TODO Mesma coisa
-				System.out.println("MenuDiretor");
-				continue;
-			}else if(conta.getTipo() == TipoEnum.PRESIDENTE) {
-				//TODO mesma coisa dos de cima carambaaa
-				System.out.println("MenuPresidente");
-				continue;
 			}
 			else {
 				System.out.println("Senha e/ou Login inválidos!\n ");

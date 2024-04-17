@@ -29,7 +29,14 @@ public class MenuGerente {
                     movimentacoesInformacoesConta(conta);
                     break;
                 case "2":
-                    relatorios(conta);
+                	if(conta.getTipo() == TipoEnum.GERENTE){
+                    relatorios(conta);}
+                    else if (conta.getTipo() == TipoEnum.DIRETOR) {
+                    relatoriosd(conta);	
+                    }
+                    else if (conta.getTipo() == TipoEnum.PRESIDENTE) {
+                        relatoriosp(conta);	
+                        }
                     break;
                 case "3":
                     continuar = false;
@@ -159,6 +166,104 @@ public class MenuGerente {
             }
         } while (continuar);
     }
+    
+    private static void relatoriosd(Conta conta) throws IOException, InterruptedException {
+    	Scanner sc = new Scanner(System.in);
+    	String opcao;
+        String cabecalho = "║         ♦ ♦ ♦  RELATÓRIOS  ♦ ♦ ♦         ║";
+        boolean continuar = true;
+        do {
+            System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
+            System.out.println(cabecalho);
+            System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝");
+            System.out.println("\n ▒ ▓│ 1 ├─ Saldo");
+            System.out.println("\n ▒ ▓│ 2 ├─ Relatório de tributação da conta corrente");
+            System.out.println("\n ▒ ▓│ 3 ├─ Relatório de Rendimento da poupança");
+            System.out.println("\n ▒ ▓│ 4 ├─ Relatório do número de contas na mesma agência");
+            System.out.println("\n ▒ ▓│ 5 ├─ Relatório de dados dos clientes");
+            System.out.println("\n ▒ ▓│ 6 ├─ Voltar ao menu anterior");
+            System.out.println("\n Escolha uma das opções acima: ");
+            opcao = sc.nextLine();
+
+            switch (opcao) {
+                case "1":
+                    System.out.println("Saldo: " + conta.getSaldo());
+                    Thread.sleep(3000);
+                    break;
+                case "2":
+                    relatorioTributacaoContaCorrente(conta);
+                    Thread.sleep(3000);
+                    break;
+                case "3":
+                    relatorioRendimentoPoupanca(sc, conta);
+                    Thread.sleep(3000);
+                    break;
+                case "4":
+                    relatorioNumeroContasAgencia(sc, conta);
+                    Thread.sleep(3000);
+                    break;
+                case "5":
+                	Leitores.RelatorioDiretor();
+                case "6":
+                    continuar = false;
+                    break;
+                default:
+                    break;
+            }
+        } while (continuar);
+    }
+    
+    private static void relatoriosp(Conta conta) throws IOException, InterruptedException {
+    	Scanner sc = new Scanner(System.in);
+    	String opcao;
+        String cabecalho = "║         ♦ ♦ ♦  RELATÓRIOS  ♦ ♦ ♦         ║";
+        boolean continuar = true;
+        do {
+            System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
+            System.out.println(cabecalho);
+            System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝");
+            System.out.println("\n ▒ ▓│ 1 ├─ Saldo");
+            System.out.println("\n ▒ ▓│ 2 ├─ Relatório de tributação da conta corrente");
+            System.out.println("\n ▒ ▓│ 3 ├─ Relatório de Rendimento da poupança");
+            System.out.println("\n ▒ ▓│ 4 ├─ Relatório do número de contas na mesma agência");
+            System.out.println("\n ▒ ▓│ 5 ├─ Relatório de dados dos clientes");
+            System.out.println("\n ▒ ▓│ 6 ├─ Relatório do capital total");
+            System.out.println("\n ▒ ▓│ 7 ├─ Voltar ao menu anterior");
+            System.out.println("\n Escolha uma das opções acima: ");
+            opcao = sc.nextLine();
+            switch (opcao) {
+                case "1":
+                    System.out.println("Saldo: " + conta.getSaldo());
+                    Thread.sleep(3000);
+                    break;
+                case "2":
+                    relatorioTributacaoContaCorrente(conta);
+                    Thread.sleep(3000);
+                    break;
+                case "3":
+                    relatorioRendimentoPoupanca(sc, conta);
+                    Thread.sleep(3000);
+                    break;
+                case "4":
+                    relatorioNumeroContasAgencia(sc, conta);
+                    Thread.sleep(3000);
+                    break;
+                case "5":
+                	Leitores.RelatorioDiretor();
+                	Thread.sleep(3000);
+                	break;
+                case "6":
+                    System.out.println("O capital total do Banco é de R$ "+ Leitores.RelatorioPresidente());
+                    Thread.sleep(3000);
+                    break;
+                case "7":
+                    continuar = false;
+                    break;
+                default:
+                    break;
+            }
+        } while (continuar);
+    }
 
     private static void relatorioTributacaoContaCorrente(Conta conta) throws IOException {
     	
@@ -186,7 +291,9 @@ public class MenuGerente {
     }
 
     private static void relatorioNumeroContasAgencia(Scanner sc, Conta conta) {
-        // Aqui você pode adicionar a lógica para obter o número de contas na mesma agência
-        System.out.println("Relatório do número de contas na mesma agência em que este gerente trabalha.");
+    	Scanner scan = new Scanner(System.in);
+    	System.out.println("Digite o número da agencia desejada:");
+    	String agencia = sc.nextLine();
+    	Leitores.RelatorioGerente(agencia);
     }
 }

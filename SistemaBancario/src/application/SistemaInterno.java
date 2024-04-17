@@ -8,7 +8,6 @@ import menus.MenuPrincipal;
 
 public class SistemaInterno {
 	public static void main(String[] args) throws IOException, InterruptedException {
-		Leitores.RelatorioDiretor();
-		Leitores.RelatorioGerente("2");
+	MenuPrincipal.MenuPrincipal();
 	}
 }

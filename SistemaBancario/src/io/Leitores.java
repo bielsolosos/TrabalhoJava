@@ -201,6 +201,7 @@ public class Leitores {
 		return null;
 	}
 	
+	@SuppressWarnings("null")
 	public static double RelatorioPresidente() {
 		double Valor = 0;
 		
