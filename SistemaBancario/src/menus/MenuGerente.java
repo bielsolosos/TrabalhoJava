@@ -108,16 +108,14 @@ public class MenuGerente {
 
     private static void realizarTransferencia(Conta conta) throws IOException {
     	Scanner sc = new Scanner(System.in);
-        double valorDaTransferencia = 0;
-        System.out.println("Qual o valor desejado para transferência?");
-        valorDaTransferencia = sc.nextDouble();
-        sc.nextLine();
-        System.out.println("Digite o número da conta para a qual deseja transferir:");
-        String contaDestino = sc.nextLine();
-        conta.transferencia(valorDaTransferencia, Leitores.RetornaConta(contaDestino));
-        double taxa = 0.20; // Taxa de transferência
-        //conta.debitarTaxa(taxa);
-        System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());
+    	double valorDaTransferencia = 0;
+		System.out.println("Qual o valor desejado para transferencia?");
+		valorDaTransferencia = sc.nextDouble();
+		sc.nextLine();
+		System.out.println("Digite o numero da conta para qual deseja tranferir?");
+		String contaDestino = sc.nextLine();
+		conta.transferencia(valorDaTransferencia, Leitores.RetornaConta(contaDestino));
+		System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());
     }
 
     private static void relatorios(Conta conta) throws IOException, InterruptedException {

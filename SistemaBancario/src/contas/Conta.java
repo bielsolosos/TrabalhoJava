@@ -7,7 +7,7 @@ import enums.TipoEnum;
 import pessoas.Cliente;
 
 public abstract class Conta extends Cliente {
-	protected double saldo;
+	public double saldo;
 	private String agencia;
 	private TipoEnum tipo;
 		
