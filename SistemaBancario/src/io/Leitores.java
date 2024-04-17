@@ -193,5 +193,46 @@ public class Leitores {
 		}
 		return null;
 	}
+	
+	public static double RelatorioPresidente() {
+		double Valor = 0;
+		
+		try {
+		BufferedReader ler = new BufferedReader(new FileReader("Cadastros.txt"));
+		String linha = "";
+		while ((linha = ler.readLine()) != null) {
+			String[] lista = linha.split(";");
+			Valor += Double.parseDouble(lista[4]);
+		}
+		return Valor;
+		}catch(IOException e){
+			e.printStackTrace();
+			return (Double) null;
+		}
+	}
+	
+	public static double RelatorioGerente(String Agencia) {
+		double Valor = 0;
+		
+		try {
+		BufferedReader ler = new BufferedReader(new FileReader("Cadastros.txt"));
+		String linha = "";
+		while ((linha = ler.readLine()) != null) {
+			String[] lista = linha.split(";");
+			if(!lista[3].equals("Diretor") && !lista[3].equals("Presidente")) {
+				if(lista[5].equals(Agencia)) {
+					Valor += Double.parseDouble(lista[4]);
+				}
+			}
+			else {
+				continue;
+			}
+		}
+		return Valor;
+		}catch(IOException e){
+			e.printStackTrace();
+			return (Double) null;
+		}
+	}
 
 }

@@ -38,6 +38,7 @@ public class ContaCorrente extends Conta implements Transacoes{
 		historicoOperacoes.add("Depósito: " + valor);
 		
 	}
+	
 	@Override
 	public void transferencia(double valor, Conta contaDestino) throws IOException{
 		if (this != contaDestino) {

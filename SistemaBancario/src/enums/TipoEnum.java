@@ -2,5 +2,9 @@ package enums;
 
 public enum TipoEnum {
 	CORRENTE,
-	POUPANCA;
+	POUPANCA,
+	FUNCIONARIO,
+	GERENTE,
+	DIRETOR,
+	PRESIDENTE;
 }

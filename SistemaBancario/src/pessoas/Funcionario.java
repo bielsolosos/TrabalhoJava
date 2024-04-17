@@ -1,6 +1,7 @@
 package pessoas;
 
 import contas.Conta;
+import enums.TipoEnum;
 
 public abstract class Funcionario extends Conta {
 	private String Cargo;
@@ -9,9 +10,8 @@ public abstract class Funcionario extends Conta {
 		super(senha, cpf, NumeroConta, Saldo);
 	}
 
-	public String getCargo() {
-		return Cargo;
-		
+	public TipoEnum getCargo() {
+		return TipoEnum.FUNCIONARIO;
 	}
 
 	public double calcularCapitalTotal() {

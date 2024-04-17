@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import contas.Conta;
+import enums.TipoEnum;
 import io.Leitores;
 
 public class Gerente extends Funcionario {
@@ -15,8 +16,15 @@ public class Gerente extends Funcionario {
 	}
 
 	@Override
-	public String getCargo() {
-		return "Gerente";
+	public TipoEnum getCargo() {
+		return TipoEnum.GERENTE;
+	}
+	
+	
+	
+	@Override
+	public TipoEnum getTipo() {
+		return TipoEnum.GERENTE;
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import contas.Conta;
+import enums.TipoEnum;
 import io.Leitores;
 
 public class Diretor extends Funcionario {
@@ -14,8 +15,15 @@ public class Diretor extends Funcionario {
 	private List<String> historicoOperacoes;
 
 	@Override
-	public String getCargo() {
-		return "Diretor";
+	public TipoEnum getCargo() {
+		return TipoEnum.DIRETOR;
+	}
+	
+	
+	
+	@Override
+	public TipoEnum getTipo() {
+		return TipoEnum.DIRETOR;
 	}
 
 	@Override

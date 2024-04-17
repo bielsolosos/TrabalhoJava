@@ -27,9 +27,16 @@ public class ContaPoupanca extends Conta{
 		Leitores.escritor("teste.txt",+valor);
 	}
 	@Override
-	public void transferencia(double valor, Conta conta) throws IOException{
-		saque(valor);
-		deposito(valor);
+	public void transferencia(double valor, Conta contaDestino) throws IOException{
+		if (this != contaDestino) {
+			this.saldo-=valor+0.20;			
+			contaDestino.saldo+=valor;
+			Leitores.escritor("teste.txt",-(valor+0.20));
+			Leitores.escritor("teste.txt",+valor);
+			Leitores.escritor("teste.txt",0.20);
+			
+			
+		}
 	}
 	
 	@Override

@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import contas.Conta;
+import enums.TipoEnum;
 import io.Leitores;
-import pessoas.Funcionario;
 
 public class MenuPrincipal {
 	public static final String RESET = "\u001B[0m";
@@ -57,34 +57,28 @@ public class MenuPrincipal {
 	
 	
 	public static void login(Scanner scan) throws IOException, InterruptedException {
-		String LoginDigitado = ""; String SenhaDigitada = ""; String Pessoa = "";		
+		String LoginDigitado = ""; String SenhaDigitada = "";
 		do {
 			System.out.println("Me diga seu CPF: ");
 			LoginDigitado = scan.nextLine();
 			System.out.println("Me diga sua senha");
 			SenhaDigitada = scan.nextLine();
-			System.out.println("Digite 1 se você for funcionário ou digite 0 caso cliente! ");
-			Pessoa = scan.nextLine();
-			//TODO Verificação Inutil pois agora é um login Único!
-			if(Pessoa.equals("1")) {
-				Funcionario conta = Leitores.loginFuncinario(SenhaDigitada, LoginDigitado);
-				if(conta != null) {
-					//TODO: Menu Funcionário
-				}
-				else {
-					continue;
-				}
+			Conta conta = Leitores.login(SenhaDigitada, LoginDigitado);
+			if(conta.getTipo().equals(TipoEnum.POUPANCA) || conta.getTipo().equals(TipoEnum.CORRENTE)) {
+				MenuCliente.menuCliente(scan,conta);
+			}else if(conta.getTipo() == TipoEnum.GERENTE) {
+				//Todo Por menuGerente feito aqui e tirar o continue
+				System.out.println("MenuGerente");
+				continue;
+			}else if(conta.getTipo() == TipoEnum.DIRETOR) {
+				//TODO Mesma coisa
+				System.out.println("MenuDiretor");
+				continue;
+			}else if(conta.getTipo() == TipoEnum.PRESIDENTE) {
+				//TODO mesma coisa dos de cima carambaaa
+				System.out.println("MenuPresidente");
+				continue;
 			}
-			else if(Pessoa.equals("0")) {
-				Conta conta = Leitores.loginCliente(SenhaDigitada, LoginDigitado);
-				if(conta != null) {
-					MenuCliente.menuCliente(scan,conta);
-				}
-				else {
-					continue;
-				}
-			}
-			
 			else {
 				System.out.println("Senha e/ou Login inválidos!\n ");
 				System.out.println("Gostaria de tentar novamente? (s/n)");

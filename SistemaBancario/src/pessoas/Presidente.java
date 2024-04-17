@@ -5,6 +5,7 @@ import java.util.List;
 
 import contas.CapitalBanco;
 import contas.Conta;
+import enums.TipoEnum;
 import io.Leitores;
 
 public class Presidente extends Funcionario{
@@ -14,8 +15,15 @@ public class Presidente extends Funcionario{
 	}
 
 	@Override
-	public String getCargo() {
-		return "Presidente";
+	public TipoEnum getCargo() {
+		return TipoEnum.PRESIDENTE;
+	}
+	
+	
+	
+	@Override
+	public TipoEnum getTipo() {
+		return TipoEnum.PRESIDENTE;
 	}
 
 
