@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import contas.Conta;
+import contas.ContaCorrente;
 import contas.ContaPoupanca;
 import enums.TipoEnum;
 import io.Leitores;
@@ -80,30 +81,28 @@ public class MenuGerente {
 
     private static void realizarSaque( Conta conta) throws IOException {
     	Scanner sc = new Scanner(System.in);
-        double valorDoSaque = 0;
-        System.out.println("Qual o valor do saque desejado?");
-        valorDoSaque = sc.nextDouble();
-        sc.nextLine();
-        if (valorDoSaque > conta.getSaldo()) {
-            System.out.println("Saldo insuficiente");
-        } else {
-            conta.saque(valorDoSaque);
-            double taxa = 0.10; // Taxa de saque
-           // conta.debitarTaxa(taxa);
-            System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());
+    	double valorDoSaque = 0;
+		System.out.println("Qual o valor do saque desejado?");
+		valorDoSaque = sc.nextDouble();
+		sc.nextLine();
+		if(valorDoSaque>conta.getSaldo()) {
+		System.out.println("Saldo isuficiente");
+		}
+		else {
+		conta.saque(valorDoSaque);
+		System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());}
         }
-    }
+
 
     private static void realizarDeposito(Conta conta) throws IOException {
     	Scanner sc = new Scanner(System.in);
-        double valorDoDeposito = 0;
-        System.out.println("Qual o valor do depósito desejado?");
-        valorDoDeposito = sc.nextDouble();
-        sc.nextLine();
-        conta.deposito(valorDoDeposito);
-        double taxa = 0.10; // Taxa de depósito
-        //conta.debitarTaxa(taxa);
-        System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());
+    	double valorDoDeposito = 0;
+		System.out.println("Qual o valor do deposito desejado?");
+		valorDoDeposito = sc.nextDouble();
+		sc.nextLine();
+		conta.deposito(valorDoDeposito);
+		System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());
+		
     }
 
     private static void realizarTransferencia(Conta conta) throws IOException {
@@ -161,15 +160,13 @@ public class MenuGerente {
         } while (continuar);
     }
 
-    private static void relatorioTributacaoContaCorrente(Conta conta) {
+    private static void relatorioTributacaoContaCorrente(Conta conta) throws IOException {
     	
         if (conta.getTipo() == TipoEnum.CORRENTE) {
-            double totalTaxas = conta.getTotalTaxas();
-            System.out.println("Total gasto em taxas: R$ " + totalTaxas);
+            System.out.println("Total gasto em taxas: R$ " + ContaCorrente.TotalTaxas());
             System.out.println("Taxas por operação:");
             System.out.println("Saque: R$0.10");
             System.out.println("Depósito: R$0.10");
-            // Transferência: R$0.20 (cobrada apenas do remetente)
             System.out.println("Transferência: R$0.20 (cobrada apenas do remetente)");
         } else {
             System.out.println("Essa operação só pode ser realizada em uma conta corrente.");
@@ -182,8 +179,7 @@ public class MenuGerente {
             double valorDoSaldo = sc.nextDouble();
             System.out.println("Qual o número de dias?");
             int dias = sc.nextInt();
-            double rendimento = ((ContaPoupanca) conta).simulacaoRendimento(valorDoSaldo, dias);
-            System.out.println("O rendimento da poupança será de R$ " + rendimento + " após " + dias + " dias.");
+            System.out.println("O rendimento da poupança será de R$ " + conta.simulacao(dias,valorDoSaldo) + " após " + dias + " dias.");
         } else {
             System.out.println("Essa operação só pode ser realizada em uma conta poupança.");
         }
