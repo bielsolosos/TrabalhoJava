@@ -25,6 +25,13 @@ public abstract class Conta extends Cliente {
 		this.agencia = agencia;
 	}
 
+	
+
+	public Conta(String senha, String cpf, String NumeroConta, double saldo) {
+		super(senha, cpf, NumeroConta);
+		this.saldo = saldo;
+	}
+
 
 	public TipoEnum getTipo() {
 		return tipo;

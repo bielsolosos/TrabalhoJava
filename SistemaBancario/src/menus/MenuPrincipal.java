@@ -65,7 +65,7 @@ public class MenuPrincipal {
 			SenhaDigitada = scan.nextLine();
 			System.out.println("Digite 1 se você for funcionário ou digite 0 caso cliente! ");
 			Pessoa = scan.nextLine();
-			
+			//TODO Verificação Inutil pois agora é um login Único!
 			if(Pessoa.equals("1")) {
 				Funcionario conta = Leitores.loginFuncinario(SenhaDigitada, LoginDigitado);
 				if(conta != null) {

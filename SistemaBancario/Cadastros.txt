@@ -1,3 +1,10 @@
-123;cpf;Bagulho;Cliente;Poupanca;1000;agencia;
-Senha;Cepefe;NumeroCepefe;Gerente;3213;3;
-Senha1;Cepefe1;1231;Presidente;7000000;
+Senha1;CpfConta1;1;Poupanca;1000;1;
+Senha2;CpfConta2;2;Corrente;1000;2;
+Senha3;CpfConta3;3;Corrente;1000;2;
+Senha4;CpfSenha4;4;Corrente;1000;2;
+Senha5;CpfSenha5;5;Gerente;1000;2;
+Senha6;CpfSenha6;6;Diretor;1000;
+Senha7;CpfSenha7;7;Presidente;1000;
+Senha8;CpfSenha8;8;Corrente;1000;1;
+Senha9;CpfSenha9;9;Poupanca;1000;2;
+Senha10;CpfSenha10;10;Corrente;1000;1;
