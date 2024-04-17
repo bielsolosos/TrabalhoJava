@@ -1,8 +1,10 @@
 package pessoas;
 
 import java.io.IOException;
+import java.util.List;
 
 import contas.Conta;
+import io.Leitores;
 
 public class Gerente extends Funcionario {
 	private String agencia;
@@ -19,42 +21,42 @@ public class Gerente extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "Gerente [agencia=" + agencia + ", getSaldo()=" + getSaldo() + ", toString()=" + super.toString()
-				+ ", getSenha()=" + getSenha() + ", getCpf()=" + getCpf() + "]";
+		return "Diretor [getSaldo()=" + getSaldo() + ", getSenha()=" + getSenha() + ", getCpf()=" + getCpf()
+				+ ", getNumeroConta()=" + getNumeroConta() + "]";
 	}
 
+	private List<String> historicoOperacoes;
 	
-
-	@Override
-	public void deposito(double valor) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void transferencia(double valor, Conta conta) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void getHisttoricoOperacoes() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public double simulacao(int dias, double valor) {
-		// TODO Auto-generated method stub
-		return 0;
+		return valor+valor*(dias*0.001);
+		//rende 0,1% ao dia 
+	}
+	@Override
+	public void saque(double valor) throws IOException {
+		this.saldo-=valor;
+		Leitores.escritor("teste.txt",-(valor));
+	}
+	@Override
+	public void deposito(double valor) throws IOException {
+		this.saldo+=valor;
+		Leitores.escritor("teste.txt",+valor);
+	}
+	@Override
+	public void transferencia(double valor, Conta conta) throws IOException{
+		saque(valor);
+		deposito(valor);
 	}
 
 	@Override
-	public void saque(double valorDoSaque) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
+	public void getHisttoricoOperacoes(){
+		System.out.println("Para cada saque será cobrado o valor de R$0.10 (dez centavos)\r\n" + " Para cada depósito será cobrado o valor de R$0.10 (dez centavos)\r\n" + " Para cada transferência será cobrado o valor de R$0.20 (dez centavos) que deverá ser cobrado apenas do remetente;"); 
+		if(historicoOperacoes.isEmpty()) {
+			System.out.println("Você ainda não fez nenhuma movimentação");
+		}
+		else {
+		System.out.println(historicoOperacoes);
+		}
+	}	
 
 }

@@ -6,6 +6,7 @@ import java.util.Scanner;
 import contas.Conta;
 import contas.ContaPoupanca;
 import enums.TipoEnum;
+import io.Leitores;
 
 public class MenuCliente {
 	public static void menuCliente(Scanner sc, Conta conta) throws IOException, InterruptedException {
@@ -82,9 +83,8 @@ public class MenuCliente {
 				valorDaTransferencia = sc.nextDouble();
 				sc.nextLine();
 				System.out.println("Digite o numero da conta para qual deseja tranferir?");
-				Conta contaDestino
-				sc.nextLine();
-				conta.transferencia(valorDaTransferencia, contaDestino);
+				String contaDestino = sc.nextLine();
+				conta.transferencia(valorDaTransferencia, Leitores.RetornaConta(contaDestino));
 				System.out.println("Seu saldo atual é de R$ " + conta.getSaldo());
 				Thread.sleep(3000);
 				break;
