@@ -10,15 +10,18 @@ import enums.TipoEnum;
 import io.Leitores;
 
 public class MenuGerente {
+	public static final String RESET = "\u001B[0m";
+	public static final String CYAN = "\u001B[36m";
+	static Scanner sc = new Scanner(System.in);
     public static void menuGerente(Conta conta) throws IOException, InterruptedException {
-    	Scanner sc = new Scanner(System.in);
+    	
         String cabecalho = "║      ♦ ♦ ♦   MENU DO GERENTE   ♦ ♦ ♦      ║";
         String opcao;
         boolean continuar = true;
         do {
-            System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
+            System.out.println(CYAN + "╔" + "═".repeat(cabecalho.length() - 2) + "╗");
             System.out.println(cabecalho);
-            System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝");
+            System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝"+ RESET);
             System.out.println("\n ▓│ 1 ├─ Movimentações da Conta");
             System.out.println("\n ▓│ 2 ├─ Relatórios");
             System.out.println("\n ▓│ 3 ├─ Sair");
@@ -45,7 +48,7 @@ public class MenuGerente {
                     break;
             }
         } while (continuar);
-        sc.close();
+        //sc.close();
     }
 
     private static void movimentacoesInformacoesConta(Conta conta) throws IOException, InterruptedException {
@@ -61,7 +64,7 @@ public class MenuGerente {
             System.out.println("\n ▒ ▓│ 2 ├─ Depósito");
             System.out.println("\n ▒ ▓│ 3 ├─ Transferência para outra conta");
             System.out.println("\n ▒ ▓│ 4 ├─ Voltar ao menu anterior");
-            System.out.println("\n Escolha uma das opções acima: ");
+            System.out.println(CYAN + "\n *** Escolha uma das opções acima *** "+ RESET);
             opcao = sc.nextLine();
 
             switch (opcao) {
@@ -130,15 +133,15 @@ public class MenuGerente {
         String cabecalho = "║         ♦ ♦ ♦  RELATÓRIOS  ♦ ♦ ♦         ║";
         boolean continuar = true;
         do {
-            System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
+            System.out.println(CYAN + "╔" + "═".repeat(cabecalho.length() - 2) + "╗");
             System.out.println(cabecalho);
-            System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝");
+            System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝"+RESET);
             System.out.println("\n ▒ ▓│ 1 ├─ Saldo");
             System.out.println("\n ▒ ▓│ 2 ├─ Relatório de tributação da conta corrente");
             System.out.println("\n ▒ ▓│ 3 ├─ Relatório de Rendimento da poupança");
             System.out.println("\n ▒ ▓│ 4 ├─ Relatório do número de contas na mesma agência");
             System.out.println("\n ▒ ▓│ 5 ├─ Voltar ao menu anterior");
-            System.out.println("\n Escolha uma das opções acima: ");
+            System.out.println(CYAN + "\n *** Escolha uma das opções acima *** "+ RESET);
             opcao = sc.nextLine();
 
             switch (opcao) {
@@ -173,16 +176,16 @@ public class MenuGerente {
         String cabecalho = "║         ♦ ♦ ♦  RELATÓRIOS  ♦ ♦ ♦         ║";
         boolean continuar = true;
         do {
-            System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
+            System.out.println(CYAN+"╔" + "═".repeat(cabecalho.length() - 2) + "╗");
             System.out.println(cabecalho);
-            System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝");
+            System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝"+RESET);
             System.out.println("\n ▒ ▓│ 1 ├─ Saldo");
             System.out.println("\n ▒ ▓│ 2 ├─ Relatório de tributação da conta corrente");
             System.out.println("\n ▒ ▓│ 3 ├─ Relatório de Rendimento da poupança");
             System.out.println("\n ▒ ▓│ 4 ├─ Relatório do número de contas na mesma agência");
             System.out.println("\n ▒ ▓│ 5 ├─ Relatório de dados dos clientes");
             System.out.println("\n ▒ ▓│ 6 ├─ Voltar ao menu anterior");
-            System.out.println("\n Escolha uma das opções acima: ");
+            System.out.println(CYAN + "\n *** Escolha uma das opções acima *** "+ RESET);
             opcao = sc.nextLine();
 
             switch (opcao) {
@@ -219,9 +222,9 @@ public class MenuGerente {
         String cabecalho = "║         ♦ ♦ ♦  RELATÓRIOS  ♦ ♦ ♦         ║";
         boolean continuar = true;
         do {
-            System.out.println("╔" + "═".repeat(cabecalho.length() - 2) + "╗");
+            System.out.println(CYAN+"╔" + "═".repeat(cabecalho.length() - 2) + "╗");
             System.out.println(cabecalho);
-            System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝");
+            System.out.println("╚" + "═".repeat(cabecalho.length() - 2) + "╝"+RESET);
             System.out.println("\n ▒ ▓│ 1 ├─ Saldo");
             System.out.println("\n ▒ ▓│ 2 ├─ Relatório de tributação da conta corrente");
             System.out.println("\n ▒ ▓│ 3 ├─ Relatório de Rendimento da poupança");
@@ -229,7 +232,7 @@ public class MenuGerente {
             System.out.println("\n ▒ ▓│ 5 ├─ Relatório de dados dos clientes");
             System.out.println("\n ▒ ▓│ 6 ├─ Relatório do capital total");
             System.out.println("\n ▒ ▓│ 7 ├─ Voltar ao menu anterior");
-            System.out.println("\n Escolha uma das opções acima: ");
+            System.out.println(CYAN + "\n *** Escolha uma das opções acima *** "+ RESET);
             opcao = sc.nextLine();
             switch (opcao) {
                 case "1":
