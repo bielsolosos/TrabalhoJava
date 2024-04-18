@@ -8,3 +8,4 @@ Senha7;CpfSenha7;7;Samuel2;Presidente;1000;
 Senha8;CpfSenha8;8;TesteNome;Corrente;1000;1;
 Senha9;CpfSenha9;9;SeilaNome;Poupanca;1000;2;
 Senha10;CpfSenha10;10;teste;Corrente;1000;1;
+Senha5;CpfSenha5;5;Erick;Gerente;1000;2;012;05506603366;02;Otrebla;Poupanca;1000;01;

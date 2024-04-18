@@ -78,7 +78,7 @@ public class Leitores {
 				System.out.println("Me diga sua Agência");
 				String agencia2 = sc.nextLine();
 				buffWrite.append(agencia2 + ";");
-				;
+				
 				break;
 			}
 			break;

@@ -12,6 +12,7 @@ import io.Leitores;
 public class MenuGerente {
 	public static final String RESET = "\u001B[0m";
 	public static final String CYAN = "\u001B[36m";
+	public static final String YELLOW = "\u001B[33m";
 	static Scanner sc = new Scanner(System.in);
     public static void menuGerente(Conta conta) throws IOException, InterruptedException {
     	
@@ -26,7 +27,13 @@ public class MenuGerente {
             System.out.println("\n ▓│ 2 ├─ Relatórios");
             System.out.println("\n ▓│ 3 ├─ Sair");
             System.out.println("\n Escolha uma das opções acima: ");
-            opcao = sc.nextLine();
+            
+            opcao = sc.nextLine().trim();
+            if (opcao.isEmpty() || !opcao.matches("[1-3]")) {
+			    System.out.println(YELLOW+"!!! Opção inválida. Por favor, escolha uma opção válida !!!"+RESET);
+			    Thread.sleep(2000);
+			    continue; 
+			}
             switch (opcao) {
                 case "1":
                     movimentacoesInformacoesConta(conta);
@@ -65,7 +72,13 @@ public class MenuGerente {
             System.out.println("\n ▒ ▓│ 3 ├─ Transferência para outra conta");
             System.out.println("\n ▒ ▓│ 4 ├─ Voltar ao menu anterior");
             System.out.println(CYAN + "\n *** Escolha uma das opções acima *** "+ RESET);
-            opcao = sc.nextLine();
+            opcao = sc.nextLine().trim();
+            
+            if (opcao.isEmpty() || !opcao.matches("[1-4]")) {
+			    System.out.println(YELLOW+"!!! Opção inválida. Por favor, escolha uma opção válida !!!"+RESET);
+			    Thread.sleep(2000);
+			    continue; 
+			}
 
             switch (opcao) {
                 case "1":
@@ -142,7 +155,13 @@ public class MenuGerente {
             System.out.println("\n ▒ ▓│ 4 ├─ Relatório do número de contas na mesma agência");
             System.out.println("\n ▒ ▓│ 5 ├─ Voltar ao menu anterior");
             System.out.println(CYAN + "\n *** Escolha uma das opções acima *** "+ RESET);
-            opcao = sc.nextLine();
+            
+            opcao = sc.nextLine().trim();
+            if (opcao.isEmpty() || !opcao.matches("[1-5]")) {
+			    System.out.println(YELLOW+"!!! Opção inválida. Por favor, escolha uma opção válida !!!"+RESET);
+			    Thread.sleep(2000);
+			    continue; 
+			}
 
             switch (opcao) {
                 case "1":
@@ -186,7 +205,14 @@ public class MenuGerente {
             System.out.println("\n ▒ ▓│ 5 ├─ Relatório de dados dos clientes");
             System.out.println("\n ▒ ▓│ 6 ├─ Voltar ao menu anterior");
             System.out.println(CYAN + "\n *** Escolha uma das opções acima *** "+ RESET);
-            opcao = sc.nextLine();
+            
+            opcao = sc.nextLine().trim();
+            if (opcao.isEmpty() || !opcao.matches("[1-5]")) {
+			    System.out.println(YELLOW+"!!! Opção inválida. Por favor, escolha uma opção válida !!!"+RESET);
+			    Thread.sleep(2000);
+			    continue; 
+			}
+            
 
             switch (opcao) {
                 case "1":
@@ -233,7 +259,14 @@ public class MenuGerente {
             System.out.println("\n ▒ ▓│ 6 ├─ Relatório do capital total");
             System.out.println("\n ▒ ▓│ 7 ├─ Voltar ao menu anterior");
             System.out.println(CYAN + "\n *** Escolha uma das opções acima *** "+ RESET);
-            opcao = sc.nextLine();
+            opcao = sc.nextLine().trim();
+            
+            if (opcao.isEmpty() || !opcao.matches("[1-7]")) {
+			    System.out.println(YELLOW+"!!! Opção inválida. Por favor, escolha uma opção válida !!!"+RESET);
+			    Thread.sleep(2000);
+			    continue; 
+			}
+            
             switch (opcao) {
                 case "1":
                     System.out.println("Saldo: " + conta.getSaldo());

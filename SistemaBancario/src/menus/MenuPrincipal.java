@@ -12,6 +12,7 @@ import io.Leitores;
 public class MenuPrincipal {
 	public static final String RESET = "\u001B[0m";
 	public static final String CYAN = "\u001B[36m";
+	public static final String YELLOW = "\u001B[33m";
 
 	public static List<Conta> cadastroGeral = new ArrayList<>();
 
@@ -29,7 +30,14 @@ public class MenuPrincipal {
 			System.out.println("\n ▓│ 3 ├─ Encerrar o Programa");
 			System.out.println(CYAN + "\n *** Escolha uma das opções acima *** "+ RESET);
 
-			opcao = scan.nextLine();
+			opcao = scan.nextLine().trim();
+			
+			if (opcao.isEmpty() || !opcao.matches("[1-3]")) {
+			    System.out.println(YELLOW+"!!! Opção inválida. Por favor, escolha uma opção válida !!!"+RESET);
+			    Thread.sleep(2000);
+			    continue; 
+			}
+			
 			switch (opcao) {
 			case "1":
 				Leitores.CriarConta();
