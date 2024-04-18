@@ -1,14 +1,12 @@
 package contas;
 
 import java.io.IOException;
-import java.util.List;
-
 import enums.TipoEnum;
 import pessoas.Cliente;
 
 public abstract class Conta extends Cliente {
 	public double saldo;
-	private String agencia;
+	protected String agencia;
 	private TipoEnum tipo;
 		
 	public Conta(String senha, String cpf, String NumeroConta, String Nome, double saldo, String agencia, TipoEnum tipo) {

@@ -59,7 +59,6 @@ public class MenuGerente {
     }
 
     private static void movimentacoesInformacoesConta(Conta conta) throws IOException, InterruptedException {
-    	Scanner sc = new Scanner(System.in);
     	String opcao;
         String cabecalho = "║   ♦ ♦ ♦   MOVIMENTAÇÃO DA CONTA   ♦ ♦ ♦   ║";
         boolean continuar = true;
@@ -103,7 +102,6 @@ public class MenuGerente {
     }
 
     private static void realizarSaque( Conta conta) throws IOException {
-    	Scanner sc = new Scanner(System.in);
     	double valorDoSaque = 0;
 		System.out.println("Qual o valor do saque desejado?");
 		valorDoSaque = sc.nextDouble();
@@ -118,7 +116,6 @@ public class MenuGerente {
 
 
     private static void realizarDeposito(Conta conta) throws IOException {
-    	Scanner sc = new Scanner(System.in);
     	double valorDoDeposito = 0;
 		System.out.println("Qual o valor do deposito desejado?");
 		valorDoDeposito = sc.nextDouble();
@@ -129,7 +126,6 @@ public class MenuGerente {
     }
 
     private static void realizarTransferencia(Conta conta) throws IOException {
-    	Scanner sc = new Scanner(System.in);
     	double valorDaTransferencia = 0;
 		System.out.println("Qual o valor desejado para transferencia?");
 		valorDaTransferencia = sc.nextDouble();
@@ -303,17 +299,12 @@ public class MenuGerente {
 
     private static void relatorioTributacaoContaCorrente(Conta conta) throws IOException {
     	
-        if (conta.getTipo() == TipoEnum.CORRENTE) {
-            System.out.println("Total gasto em taxas: R$ " + ContaCorrente.TotalTaxas());
+           	System.out.println("Total gasto em taxas: R$ " + ContaCorrente.TotalTaxas());
             System.out.println("Taxas por operação:");
             System.out.println("Saque: R$0.10");
             System.out.println("Depósito: R$0.10");
             System.out.println("Transferência: R$0.20 (cobrada apenas do remetente)");
-        } else {
-            System.out.println("Essa operação só pode ser realizada em uma conta corrente.");
-        }
     }
-
     private static void relatorioRendimentoPoupanca(Scanner sc, Conta conta) {
         if (conta instanceof ContaPoupanca) {
             System.out.println("Qual o saldo deseja utilizar na simulação?");
@@ -327,7 +318,6 @@ public class MenuGerente {
     }
 
     private static void relatorioNumeroContasAgencia(Scanner sc, Conta conta) {
-    	Scanner scan = new Scanner(System.in);
     	System.out.println("Digite o número da agencia desejada:");
     	String agencia = sc.nextLine();
     	Leitores.RelatorioGerente(agencia);

@@ -100,7 +100,6 @@ public class MenuCliente {
 	}
 
 	private static void relatorios(Scanner sc, Conta conta) throws IOException, InterruptedException {
-		// TODO menu duplicado
 		String opcao;
 		String cabecalho = "║         ♦ ♦ ♦  RELATÓRIOS  ♦ ♦ ♦         ║";
 		boolean continuar = true;

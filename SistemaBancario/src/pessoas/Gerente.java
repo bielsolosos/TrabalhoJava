@@ -8,7 +8,6 @@ import enums.TipoEnum;
 import io.Leitores;
 
 public class Gerente extends Funcionario {
-	private String agencia;
 
 	public Gerente(String senha, String cpf, String NumeroConta, String Nome, double Saldo, String agencia) {
 		super(senha, cpf, NumeroConta, Nome, Saldo);

@@ -85,13 +85,12 @@ public class ContaCorrente extends Conta implements Transacoes{
 	@SuppressWarnings("null")
 	public static double TotalTaxas() throws IOException{
 	double Valor = 0;
-		
 		try {
 		BufferedReader ler = new BufferedReader(new FileReader("taxas.txt"));
 		String linha = "";
 		while ((linha = ler.readLine()) != null) {
 			String[] lista = linha.split(";");
-			Valor += Double.parseDouble(lista[4]);
+			Valor += Double.parseDouble(lista[0]);
 		}
 		return Valor;
 		}catch(IOException e){
